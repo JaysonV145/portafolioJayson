@@ -1,125 +1,119 @@
 <template>
   <main>
-    <transition-group name="fade" tag="div" class="grid-container">
-      <div
-        v-if="currentSection === '' || currentSection === 'experience'"
-        :key="'experience-' + currentSection"
-        :class="[
-          'titulo-inicio',
-          {
-            focus: currentSection === 'experience',
-            'move-right': currentSection === 'experience' && isExpanded,
-            'move-left': currentSection === 'experience' && !isExpanded,
-          },
-        ]"
+    <div class="titulo-inicio">
+      <h1 :class="{ 'titulo-active': showContent.experiencia }">Experiencia</h1>
+      <button
+        class="botonverMas"
+        :class="{ active: showContent.experiencia }"
+        @click="toggleContent('experiencia')"
       >
-        <Experience
-          :currentSection="currentSection"
-          sectionName="experience"
-          @toggleSection="toggleSection"
-        />
-      </div>
+        {{ showContent.experiencia ? "Ver menos" : "Ver más" }}
+      </button>
+      <transition name="fade">
+        <ul
+          v-if="showContent.experiencia"
+          class="descripcion"
+          :class="{ expand: showContent.experiencia }"
+        >
+          <li>Vue.js</li>
+          <li>Bootstrap</li>
+          <li>Javascript</li>
+          <li>Voiceflow</li>
+        </ul>
+      </transition>
+    </div>
 
-      <div
-        v-if="currentSection === '' || currentSection === 'sobreMi'"
-        :key="'sobreMi-' + currentSection"
-        :class="[
-          'titulo-inicio',
-          {
-            focus: currentSection === 'sobreMi',
-            'move-right': currentSection === 'sobreMi' && isExpanded,
-            'move-left': currentSection === 'sobreMi' && !isExpanded,
-          },
-        ]"
+    <div v-if="!showContent.experiencia" class="titulo-inicio">
+      <h1>Sobre mí</h1>
+      <button
+        class="botonverMas"
+        :class="{ active: showContent.sobreMi }"
+        @click="toggleContent('sobreMi')"
       >
-        <SobreMi
-          :currentSection="currentSection"
-          sectionName="sobreMi"
-          @toggleSection="toggleSection"
-        />
-      </div>
+        {{ showContent.sobreMi ? "Ver menos" : "Ver más" }}
+      </button>
+      <transition name="fade">
+        <p
+          v-if="showContent.sobreMi"
+          class="descripcion"
+          :class="{ expand: showContent.sobreMi }"
+        >
+          ¡Bienvenido!, Soy Jayson Vargas, un apasionado Desarrollador de
+          Software, con una gran pasión por la tecnología y la innovación. Mi
+          objetivo es crear soluciones digitales que no solo respondan a las
+          necesidades actuales, sino que también aborden los desafíos futuros
+          con creatividad y agilidad.
+        </p>
+      </transition>
+    </div>
 
-      <div
-        v-if="currentSection === '' || currentSection === 'habilidades'"
-        :key="'habilidades-' + currentSection"
-        :class="[
-          'titulo-inicio',
-          {
-            focus: currentSection === 'habilidades',
-            'move-right': currentSection === 'habilidades' && isExpanded,
-            'move-left': currentSection === 'habilidades' && !isExpanded,
-          },
-        ]"
+    <div
+      v-if="!showContent.experiencia && !showContent.sobreMi"
+      class="titulo-inicio"
+    >
+      <h1>Habilidades</h1>
+      <button
+        class="botonverMas"
+        :class="{ active: showContent.hola }"
+        @click="toggleContent('hola')"
       >
-        <Habilidades
-          :currentSection="currentSection"
-          sectionName="habilidades"
-          @toggleSection="toggleSection"
-        />
-      </div>
-    </transition-group>
+        {{ showContent.hola ? "Ver menos" : "Ver más" }}
+      </button>
+      <transition name="fade">
+        <p
+          v-if="showContent.hola"
+          class="descripcion"
+          :class="{ expand: showContent.hola }"
+        >
+          ¡Hola! Este es un mensaje de prueba.
+        </p>
+      </transition>
+    </div>
   </main>
 </template>
 
 <script>
-const show = ref(true);
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import Carousel from "@/components/Carousel.vue";
 import { ref } from "vue";
-import Experience from "./Experience.vue";
-import SobreMi from "./SobreMi.vue";
-import Habilidades from "./Habilidades.vue";
+
 export default {
   name: "MedioSection",
-  components: {
-    FontAwesomeIcon,
-    Carousel,
-    Experience,
-    SobreMi,
-    Habilidades,
-  },
   setup() {
-    const currentSection = ref("");
-    const isExpanded = ref(false);
+    const showContent = ref({
+      experiencia: false,
+      sobreMi: false,
+      hola: false,
+    });
 
-    const toggleSection = (section) => {
-      if (currentSection.value === section) {
-        isExpanded.value = !isExpanded.value;
-        if (!isExpanded.value) {
-          // Si se hace clic en "Ver menos", se espera un pequeño tiempo antes de colapsar el componente
-          setTimeout(() => {
-            currentSection.value = "";
-          }, 500); // Ajusta el tiempo para que coincida con la animación
-        }
+    // Lógica para alternar la visibilidad de las secciones
+    const toggleContent = (section) => {
+      // Si la sección ya está activa, solo la desactiva
+      if (showContent.value[section]) {
+        showContent.value[section] = false;
       } else {
-        currentSection.value = section;
-        isExpanded.value = true;
+        // Desactiva todas las demás secciones al activar una nueva
+        Object.keys(showContent.value).forEach((key) => {
+          showContent.value[key] = false;
+        });
+        showContent.value[section] = true;
       }
     };
 
-    return {
-      currentSection,
-      isExpanded,
-      toggleSection,
-    };
+    return { showContent, toggleContent };
   },
 };
 </script>
 
 <style scoped>
-body {
-  background-color: var(--color-oscuro-fondo2);
-}
 main {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Dos columnas de igual tamaño */
+  grid-template-columns: repeat(3, 1fr); /* Tres columnas de igual tamaño */
   gap: 10px; /* Espacio entre los elementos */
   height: 50vh;
+  margin-top: 50px;
   justify-content: center;
 }
 
 .titulo-inicio {
-  /** Crear 3 componentes, cada uno tiene su animación individual, pero cada componente que tenga una transición de entrada */
   display: flex;
   flex-direction: column;
   justify-content: flex-start; /* Centra el contenido verticalmente */
@@ -127,38 +121,9 @@ main {
   text-align: center;
   width: 400px;
   color: white;
-  margin-top: 150px;
+  margin-top: 200px;
   position: relative;
-  transform: translateX(-10%); /*Centrado */
-  transition: transform 0.5s ease-in-out;
-}
-
-.titulo-inicio.focus {
-  animation: focusAnimation 2s ease forwards;
-}
-
-@keyframes focusAnimation {
-  0% {
-    transform: scale(1) translateY(0);
-  }
-  50% {
-    transform: scale(1.2) translateY(-10px);
-  }
-  100% {
-    transform: scale(1) translateY(0);
-  }
-}
-
-.move-right {
-  transform: translateX(
-    100%
-  ); /* Mueve el componente seleccionado a la derecha */
-}
-
-.move-left {
-  transform: translateX(
-    0
-  ); /* Retorna el componente seleccionado a su posición original */
+  transform: translateX(-10%); /* Centrado */
 }
 
 .titulo-inicio h1 {
@@ -166,16 +131,15 @@ main {
   margin: 0;
 }
 
-.botones-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px; /* Espacio entre los botones */
+.titulo-active {
+  position: absolute;
+  top: -50px;
+  left: -150px;
+  animation: slideDown 0.6s ease forwards; /* Aplica la misma animación al título */
+  transform-origin: top; /* Ajusta el punto de inicio de la animación */
 }
 
 .botonverMas {
-  position: relative;
-  justify-content: space-between;
   border: none;
   width: 300px;
   padding: 15px;
@@ -183,124 +147,60 @@ main {
   color: var(--color-blanco);
   cursor: pointer;
   margin-top: 10px; /* Espacio entre el título y el botón */
+  transition: transform 0.4s ease, background-color 0.5s;
 }
 
-.botonVerMas,
-.botonverMas span {
-  transition: 0.4s ease-in-out all;
-  position: relative;
-  justify-content: center;
-  text-align: center;
-  right: 0%;
-}
-
-.botonVerMas,
-.botonverMas .icono {
-  display: flex;
-  align-items: center;
+.botonverMas.active {
   position: absolute;
-  z-index: 2;
-  left: -20px;
-  transition: 0.3 ease-in-out all;
-  opacity: 0;
-}
-
-.botonVerMas,
-.botonverMas svg {
-  color: var(--color-blanco);
-  width: 35px;
-  height: 35px;
-}
-
-.botonverMas:hover {
+  left: -150px;
+  bottom: -90px;
+  transition: bottom 0.5s ease 0.3s;
+  transform: scale(1.1); /* Agranda el botón al hacer clic */
   background-color: var(--color-verde-hover);
-  transition: 0.5s;
+  animation: slideDown 2s ease forwards;
 }
 
-.botonVerMas:hover .icono {
-  left: calc(100% - 50px);
-  opacity: 1;
+.titulo-inicio.active h1 {
+  animation: slideDown 0.6s ease forwards; /* Aplica la misma animación al título */
 }
 
-.botonVerMas:hover span {
-  right: 50px;
+@keyframes slideDown {
+  0% {
+    transform: scale(1.1) translateY(-20px); /* Empieza un poco más arriba */
+    opacity: 0; /* Empieza invisible */
+  }
+  100% {
+    transform: scale(1.1) translateY(0); /* Termina en su posición final */
+    opacity: 1; /* Termina visible */
+  }
 }
+
 .descripcion {
+  display: flex;
+  flex-direction: row; /* Alinea los elementos en una columna */
+  gap: 90px; /* Espacio entre cada elemento (ajusta según prefieras) */
+  position: absolute;
   margin-top: 50px; /* Espacio entre los botones y la descripción */
+  right: -800px;
+  text-align: right; /* Alinea el contenido de texto a la derecha */
+  transform: translateX(100%); /* Mueve el contenido a la derecha */
+  transition: transform 0.5s ease; /* Suaviza la transición al moverse */
+  list-style: none;
+}
+
+.descripcion.expand {
+  transform: scale(1.6); /* Agranda el contenido al mostrarlo */
+  max-height: 500px; /* Controla el tamaño máximo de expansión */
 }
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.5 ease-in-out;
+  transition: opacity 1s, transform 1s;
 }
 
 .fade-enter-from,
 .fade-leave-to {
-  transition: opacity 0.5 ease-in-out;
-}
-
-/* Animación de enfoque para el componente seleccionado */
-.focus {
-  animation: focusAnimation 2s ease forwards; /*Animación de foco poco a poco*/
-}
-
-@keyframes focusAnimation {
-  0% {
-    transform: scale(1) translateY(0); /* Sin cambio en el tamaño o posición inicial */
-  }
-  50% {
-    transform: scale(1.2) translateY(-10px); /* Aumenta el tamaño y eleva ligeramente */
-  }
-  100% {
-    transform: scale(1) translateY(0); /* Tamaño final y posición original */
-  }
-}
-
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Tres columnas de igual tamaño */
-  gap: 10px; /* Espacio entre los elementos */
-}
-
-.botonDestino {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border: none;
-  padding: 15px;
-  background-color: transparent;
-  color: var(--color-blanco);
-  cursor: pointer;
-  margin: 5px 5px 5px 5px;
-  transition: 0.3 ease all;
-}
-
-.botonDestino span {
-  position: relative;
-  z-index: 2;
-  transition: 0.3s ease all;
-}
-
-.botonDestino svg {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  fill: none;
-}
-
-.botonDestino rect {
-  width: 100%;
-  height: 50px;
-  stroke: var(--color-blanco);
-  stroke-width: 2px;
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
-  transition: 0.6s ease all;
-}
-
-.botonDestino:hover rect {
-  stroke-dashoffset: 0;
+  opacity: 0;
+  transform: translateX(50%);
 }
 </style>

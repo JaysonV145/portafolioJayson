@@ -426,7 +426,7 @@ export default {
   display: flex;
   position: relative;
   justify-content: end;
-  bottom: 320px;
+  bottom: 360px;
   left: 110px;
 }
 

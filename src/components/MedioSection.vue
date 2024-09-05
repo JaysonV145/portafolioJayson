@@ -1,14 +1,20 @@
 <template>
   <main>
     <div class="titulo-inicio">
-      <h1>Experiencia</h1>
-      <!--Se llama a toggleContent pasando el nombre de la sección correspondiente-->
-      <button class="botonverMas" @click="toggleContent('experiencia')">
-        <!-- Aquí se pone operador ternario, se evalúa con true o false, si es true retorna lo primero, si no, lo segundo-->
+      <h1 :class="{ 'titulo-active': showContent.experiencia }">Experiencia</h1>
+      <button
+        class="botonverMas"
+        :class="{ active: showContent.experiencia }"
+        @click="toggleContent('experiencia')"
+      >
         {{ showContent.experiencia ? "Ver menos" : "Ver más" }}
       </button>
       <transition name="fade">
-        <ul v-if="showContent.experiencia" class="descripcion">
+        <ul
+          v-if="showContent.experiencia"
+          class="descripcion"
+          :class="{ expand: showContent.experiencia }"
+        >
           <li>Vue.js</li>
           <li>Bootstrap</li>
           <li>Javascript</li>
@@ -17,13 +23,21 @@
       </transition>
     </div>
 
-    <div class="titulo-inicio">
+    <div v-if="!showContent.experiencia" class="titulo-inicio">
       <h1>Sobre mí</h1>
-      <button class="botonverMas" @click="toggleContent('sobreMi')">
+      <button
+        class="botonverMas"
+        :class="{ active: showContent.sobreMi }"
+        @click="toggleContent('sobreMi')"
+      >
         {{ showContent.sobreMi ? "Ver menos" : "Ver más" }}
       </button>
       <transition name="fade">
-        <p v-if="showContent.sobreMi" class="descripcion">
+        <p
+          v-if="showContent.sobreMi"
+          class="descripcion"
+          :class="{ expand: showContent.sobreMi }"
+        >
           ¡Bienvenido!, Soy Jayson Vargas, un apasionado Desarrollador de
           Software, con una gran pasión por la tecnología y la innovación. Mi
           objetivo es crear soluciones digitales que no solo respondan a las
@@ -33,13 +47,24 @@
       </transition>
     </div>
 
-    <div class="titulo-inicio">
+    <div
+      v-if="!showContent.experiencia && !showContent.sobreMi"
+      class="titulo-inicio"
+    >
       <h1>Habilidades</h1>
-      <button class="botonverMas" @click="toggleContent('hola')">
+      <button
+        class="botonverMas"
+        :class="{ active: showContent.hola }"
+        @click="toggleContent('hola')"
+      >
         {{ showContent.hola ? "Ver menos" : "Ver más" }}
       </button>
       <transition name="fade">
-        <p v-if="showContent.hola" class="descripcion">
+        <p
+          v-if="showContent.hola"
+          class="descripcion"
+          :class="{ expand: showContent.hola }"
+        >
           ¡Hola! Este es un mensaje de prueba.
         </p>
       </transition>
@@ -48,20 +73,10 @@
 </template>
 
 <script>
-const show = ref(true);
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import Carousel from "@/components/Carousel.vue";
 import { ref } from "vue";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 export default {
   name: "MedioSection",
-  components: {
-    FontAwesomeIcon,
-    Carousel,
-  },
   setup() {
     const showContent = ref({
       experiencia: false,
@@ -69,10 +84,20 @@ export default {
       hola: false,
     });
 
-    /**Aquí, recibe el nombre de la sección como argumento y cambia el estado true a false o viceversa */
+    // Lógica para alternar la visibilidad de las secciones
     const toggleContent = (section) => {
-      showContent.value[section] = !showContent.value[section];
+      // Si la sección ya está activa, solo la desactiva
+      if (showContent.value[section]) {
+        showContent.value[section] = false;
+      } else {
+        // Desactiva todas las demás secciones al activar una nueva
+        Object.keys(showContent.value).forEach((key) => {
+          showContent.value[key] = false;
+        });
+        showContent.value[section] = true;
+      }
     };
+
     return { showContent, toggleContent };
   },
 };
@@ -81,10 +106,11 @@ export default {
 <style scoped>
 main {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Dos columnas de igual tamaño */
+  grid-template-columns: repeat(3, 1fr); /* Tres columnas de igual tamaño */
   gap: 10px; /* Espacio entre los elementos */
   height: 50vh;
   justify-content: center;
+  margin-bottom: -100px;
 }
 
 .titulo-inicio {
@@ -95,9 +121,9 @@ main {
   text-align: center;
   width: 400px;
   color: white;
-  margin-top: 90px;
+  margin-top: 100px;
   position: relative;
-  transform: translateX(-10%); /*Centrado */
+  transform: translateX(-10%); /* Centrado */
 }
 
 .titulo-inicio h1 {
@@ -105,16 +131,15 @@ main {
   margin: 0;
 }
 
-.botones-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px; /* Espacio entre los botones */
+.titulo-active {
+  position: absolute;
+  top: -150px;
+  left: -150px;
+  animation: slideDown 0.6s ease forwards; /* Aplica la misma animación al título */
+  transform-origin: top; /* Ajusta el punto de inicio de la animación */
 }
 
 .botonverMas {
-  position: relative;
-  justify-content: space-between;
   border: none;
   width: 300px;
   padding: 15px;
@@ -122,102 +147,59 @@ main {
   color: var(--color-blanco);
   cursor: pointer;
   margin-top: 10px; /* Espacio entre el título y el botón */
+  transition: transform 0.4s ease, background-color 0.5s;
 }
 
-.botonVerMas,
-.botonverMas span {
-  transition: 0.4s ease-in-out all;
-  position: relative;
-  justify-content: center;
-  text-align: center;
-  right: 0%;
-}
-
-.botonVerMas,
-.botonverMas .icono {
-  display: flex;
-  align-items: center;
+.botonverMas.active {
   position: absolute;
-  z-index: 2;
-  left: -20px;
-  transition: 0.3 ease-in-out all;
-  opacity: 0;
-}
-
-.botonVerMas,
-.botonverMas svg {
-  color: var(--color-blanco);
-  width: 35px;
-  height: 35px;
-}
-
-.botonverMas:hover {
+  bottom: 15px;
+  transition: bottom 0.5s ease 0.3s;
+  transform: scale(1.1); /* Agranda el botón al hacer clic */
   background-color: var(--color-verde-hover);
-  transition: 0.5s;
+  animation: slideDown 2s ease forwards;
 }
 
-.botonVerMas:hover .icono {
-  left: calc(100% - 50px);
-  opacity: 1;
+.titulo-inicio.active h1 {
+  animation: slideDown 0.6s ease forwards; /* Aplica la misma animación al título */
 }
 
-.botonVerMas:hover span {
-  right: 50px;
+@keyframes slideDown {
+  0% {
+    transform: scale(1.1) translateY(-20px); /* Empieza un poco más arriba */
+    opacity: 0; /* Empieza invisible */
+  }
+  100% {
+    transform: scale(1.1) translateY(0); /* Termina en su posición final */
+    opacity: 1; /* Termina visible */
+  }
 }
+
 .descripcion {
+  display: flex;
+  flex-direction: row; /* Alinea los elementos en una columna */
+  gap: 90px; /* Espacio entre cada elemento (ajusta según prefieras) */
+  position: absolute;
   margin-top: 50px; /* Espacio entre los botones y la descripción */
+  right: -800px;
+  text-align: right; /* Alinea el contenido de texto a la derecha */
+  transform: translateX(100%); /* Mueve el contenido a la derecha */
+  transition: transform 0.5s ease; /* Suaviza la transición al moverse */
+  list-style: none;
+}
+
+.descripcion.expand {
+  transform: scale(1.6); /* Agranda el contenido al mostrarlo */
+  max-height: 500px; /* Controla el tamaño máximo de expansión */
 }
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.8s, transform 0.8s;
+  transition: opacity 1s, transform 1s;
 }
 
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
   transform: translateX(50%);
-}
-
-.botonDestino {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border: none;
-  padding: 15px;
-  background-color: transparent;
-  color: var(--color-blanco);
-  cursor: pointer;
-  margin: 5px 5px 5px 5px;
-  transition: 0.3 ease all;
-}
-
-.botonDestino span {
-  position: relative;
-  z-index: 2;
-  transition: 0.3s ease all;
-}
-
-.botonDestino svg {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  fill: none;
-}
-
-.botonDestino rect {
-  width: 100%;
-  height: 50px;
-  stroke: var(--color-blanco);
-  stroke-width: 2px;
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
-  transition: 0.6s ease all;
-}
-
-.botonDestino:hover rect {
-  stroke-dashoffset: 0;
 }
 </style>
