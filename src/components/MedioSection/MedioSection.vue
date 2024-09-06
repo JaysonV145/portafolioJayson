@@ -71,7 +71,6 @@
     </div>
   </main>
 </template>
-
 <script>
 import { ref } from "vue";
 
@@ -82,19 +81,20 @@ export default {
       experiencia: false,
       sobreMi: false,
       hola: false,
+      activeSection: null,
     });
 
     // Lógica para alternar la visibilidad de las secciones
     const toggleContent = (section) => {
-      // Si la sección ya está activa, solo la desactiva
       if (showContent.value[section]) {
         showContent.value[section] = false;
+        showContent.value.activeSection = null;
       } else {
-        // Desactiva todas las demás secciones al activar una nueva
         Object.keys(showContent.value).forEach((key) => {
           showContent.value[key] = false;
         });
         showContent.value[section] = true;
+        showContent.value.activeSection = section;
       }
     };
 
@@ -106,24 +106,29 @@ export default {
 <style scoped>
 main {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Tres columnas de igual tamaño */
-  gap: 10px; /* Espacio entre los elementos */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
   height: 50vh;
   margin-top: 50px;
   justify-content: center;
+  transition: transform 0.5s ease;
+}
+
+.content-active {
+  transform: translateX(calc((100% / 3) * -1 * var(--active-section-index)));
 }
 
 .titulo-inicio {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* Centra el contenido verticalmente */
+  justify-content: flex-start;
   align-items: center;
   text-align: center;
   width: 400px;
   color: white;
   margin-top: 200px;
   position: relative;
-  transform: translateX(-10%); /* Centrado */
+  transform: translateX(-10%);
 }
 
 .titulo-inicio h1 {
@@ -135,8 +140,8 @@ main {
   position: absolute;
   top: -50px;
   left: -150px;
-  animation: slideDown 0.6s ease forwards; /* Aplica la misma animación al título */
-  transform-origin: top; /* Ajusta el punto de inicio de la animación */
+  animation: slideDown 0.6s ease forwards;
+  transform-origin: top;
 }
 
 .botonverMas {
@@ -146,51 +151,46 @@ main {
   background-color: var(--color-verde);
   color: var(--color-blanco);
   cursor: pointer;
-  margin-top: 10px; /* Espacio entre el título y el botón */
+  margin-top: 10px;
   transition: transform 0.4s ease, background-color 0.5s;
 }
 
 .botonverMas.active {
-  position: absolute;
-  left: -150px;
-  bottom: -90px;
-  transition: bottom 0.5s ease 0.3s;
-  transform: scale(1.1); /* Agranda el botón al hacer clic */
+  position: relative;
+  left: -200px;
+  bottom: -150px;
+  transform: scale(1.1);
   background-color: var(--color-verde-hover);
   animation: slideDown 2s ease forwards;
 }
 
-.titulo-inicio.active h1 {
-  animation: slideDown 0.6s ease forwards; /* Aplica la misma animación al título */
-}
-
 @keyframes slideDown {
   0% {
-    transform: scale(1.1) translateY(-20px); /* Empieza un poco más arriba */
-    opacity: 0; /* Empieza invisible */
+    transform: scale(1.1) translateY(-20px);
+    opacity: 0;
   }
   100% {
-    transform: scale(1.1) translateY(0); /* Termina en su posición final */
-    opacity: 1; /* Termina visible */
+    transform: scale(1.1) translateY(0);
+    opacity: 1;
   }
 }
 
 .descripcion {
   display: flex;
-  flex-direction: row; /* Alinea los elementos en una columna */
-  gap: 90px; /* Espacio entre cada elemento (ajusta según prefieras) */
+  flex-direction: row;
+  gap: 90px;
   position: absolute;
-  margin-top: 50px; /* Espacio entre los botones y la descripción */
+  margin-top: 50px;
   right: -800px;
-  text-align: right; /* Alinea el contenido de texto a la derecha */
-  transform: translateX(100%); /* Mueve el contenido a la derecha */
-  transition: transform 0.5s ease; /* Suaviza la transición al moverse */
+  text-align: right;
+  transform: translateX(100%);
+  transition: transform 0.5s ease;
   list-style: none;
 }
 
 .descripcion.expand {
-  transform: scale(1.6); /* Agranda el contenido al mostrarlo */
-  max-height: 500px; /* Controla el tamaño máximo de expansión */
+  transform: scale(1.6);
+  max-height: 500px;
 }
 
 .fade-enter-active,
