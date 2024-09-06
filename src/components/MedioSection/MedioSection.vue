@@ -1,6 +1,7 @@
 <template>
   <main>
-    <div class="titulo-inicio">
+    <!-- Sección Experiencia -->
+    <div v-if="!showContent.sobreMi && !showContent.hola" class="titulo-inicio">
       <h1 :class="{ 'titulo-active': showContent.experiencia }">Experiencia</h1>
       <button
         class="botonverMas"
@@ -23,8 +24,12 @@
       </transition>
     </div>
 
-    <div v-if="!showContent.experiencia" class="titulo-inicio">
-      <h1>Sobre mí</h1>
+    <!-- Sección Sobre mí -->
+    <div
+      v-if="!showContent.experiencia && !showContent.hola"
+      class="titulo-inicio"
+    >
+      <h1 :class="{ 'titulo-active': showContent.sobreMi }">Sobre mí</h1>
       <button
         class="botonverMas"
         :class="{ active: showContent.sobreMi }"
@@ -47,11 +52,12 @@
       </transition>
     </div>
 
+    <!-- Sección Habilidades -->
     <div
       v-if="!showContent.experiencia && !showContent.sobreMi"
       class="titulo-inicio"
     >
-      <h1>Habilidades</h1>
+      <h1 :class="{ 'titulo-active': showContent.hola }">Habilidades</h1>
       <button
         class="botonverMas"
         :class="{ active: showContent.hola }"
@@ -71,6 +77,7 @@
     </div>
   </main>
 </template>
+
 <script>
 import { ref } from "vue";
 
@@ -90,6 +97,7 @@ export default {
         showContent.value[section] = false;
         showContent.value.activeSection = null;
       } else {
+        // Oculta todas las secciones y activa solo la seleccionada
         Object.keys(showContent.value).forEach((key) => {
           showContent.value[key] = false;
         });
@@ -104,6 +112,11 @@ export default {
 </script>
 
 <style scoped>
+/* El estilo permanece igual */
+</style>
+
+<style scoped>
+/* Estilos originales */
 main {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -112,10 +125,6 @@ main {
   margin-top: 50px;
   justify-content: center;
   transition: transform 0.5s ease;
-}
-
-.content-active {
-  transform: translateX(calc((100% / 3) * -1 * var(--active-section-index)));
 }
 
 .titulo-inicio {
@@ -139,7 +148,7 @@ main {
 .titulo-active {
   position: absolute;
   top: -50px;
-  left: -150px;
+  left: -100px;
   animation: slideDown 0.6s ease forwards;
   transform-origin: top;
 }
@@ -157,7 +166,7 @@ main {
 
 .botonverMas.active {
   position: relative;
-  left: -200px;
+  left: -150px;
   bottom: -150px;
   transform: scale(1.1);
   background-color: var(--color-verde-hover);
