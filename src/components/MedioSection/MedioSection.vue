@@ -10,18 +10,7 @@
       >
         {{ showContent.experiencia ? "Ver menos" : "Ver más" }}
       </button>
-      <transition name="fade">
-        <ul
-          v-if="showContent.experiencia"
-          class="descripcion"
-          :class="{ expand: showContent.experiencia }"
-        >
-          <li>Vue.js</li>
-          <li>Bootstrap</li>
-          <li>Javascript</li>
-          <li>Voiceflow</li>
-        </ul>
-      </transition>
+      <Experiencia :showContent="showContent" />
     </div>
 
     <!-- Sección Sobre mí -->
@@ -37,19 +26,7 @@
       >
         {{ showContent.sobreMi ? "Ver menos" : "Ver más" }}
       </button>
-      <transition name="fade">
-        <p
-          v-if="showContent.sobreMi"
-          class="descripcion"
-          :class="{ expand: showContent.sobreMi }"
-        >
-          ¡Bienvenido!, Soy Jayson Vargas, un apasionado Desarrollador de
-          Software, con una gran pasión por la tecnología y la innovación. Mi
-          objetivo es crear soluciones digitales que no solo respondan a las
-          necesidades actuales, sino que también aborden los desafíos futuros
-          con creatividad y agilidad.
-        </p>
-      </transition>
+      <SobreMi :showContent="showContent" />
     </div>
 
     <!-- Sección Habilidades -->
@@ -65,24 +42,24 @@
       >
         {{ showContent.hola ? "Ver menos" : "Ver más" }}
       </button>
-      <transition name="fade">
-        <p
-          v-if="showContent.hola"
-          class="descripcion"
-          :class="{ expand: showContent.hola }"
-        >
-          ¡Hola! Este es un mensaje de prueba.
-        </p>
-      </transition>
+      <Habilidades :showContent="showContent" />
     </div>
   </main>
 </template>
 
 <script>
 import { ref } from "vue";
+import Experiencia from "./Experiencia.vue";
+import SobreMi from "./SobreMi.vue";
+import Habilidades from "./Habilidades.vue";
 
 export default {
   name: "MedioSection",
+  components: {
+    Experiencia,
+    SobreMi,
+    Habilidades,
+  },
   setup() {
     const showContent = ref({
       experiencia: false,
@@ -91,13 +68,11 @@ export default {
       activeSection: null,
     });
 
-    // Lógica para alternar la visibilidad de las secciones
     const toggleContent = (section) => {
       if (showContent.value[section]) {
         showContent.value[section] = false;
         showContent.value.activeSection = null;
       } else {
-        // Oculta todas las secciones y activa solo la seleccionada
         Object.keys(showContent.value).forEach((key) => {
           showContent.value[key] = false;
         });
@@ -167,7 +142,7 @@ main {
 .botonverMas.active {
   position: relative;
   left: -150px;
-  bottom: -150px;
+  bottom: -700px; /**Cambiar */
   transform: scale(1.1);
   background-color: var(--color-verde-hover);
   animation: slideDown 2s ease forwards;
@@ -182,24 +157,6 @@ main {
     transform: scale(1.1) translateY(0);
     opacity: 1;
   }
-}
-
-.descripcion {
-  display: flex;
-  flex-direction: row;
-  gap: 90px;
-  position: absolute;
-  margin-top: 50px;
-  right: -800px;
-  text-align: right;
-  transform: translateX(100%);
-  transition: transform 0.5s ease;
-  list-style: none;
-}
-
-.descripcion.expand {
-  transform: scale(1.6);
-  max-height: 500px;
 }
 
 .fade-enter-active,

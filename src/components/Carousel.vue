@@ -17,8 +17,6 @@
 </template>
 
 <script>
-import planetaSinFondo from "@/assets/carl_sagan.jpg";
-import coheteSinFondo from "@/assets/cohete_sin_fondo.png";
 export default {
   data() {
     return {
