@@ -1,8 +1,9 @@
 <template>
   <div class="containerPrincipal">
     <TitleSection></TitleSection>
-    <MedioSection></MedioSection>
-    <ProjectSection></ProjectSection>
+    <div id="medioSection" class="animate__animated animate__slideInUp">
+      <MedioSection></MedioSection>
+    </div>
   </div>
 </template>
 
@@ -13,7 +14,7 @@
 import Home from "../view-logic/Home.js";
 
 import TitleSection from "../components/TitleSection.vue";
-import MedioSection from "@/components/MedioSection.vue";
+import MedioSection from "../components/compMedioSection/MedioSection.vue";
 import Carousel from "@/components/Carousel.vue";
 import ProjectSection from "@/components/ProjectSection.vue";
 
@@ -22,7 +23,23 @@ export default {
     TitleSection,
     MedioSection,
     ProjectSection,
-    Carousel,
+  },
+  mounted() {
+    const MedioSection = document.querySelector("#medioSection");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            MedioSection.classList.add("animate__slideInUp");
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+      }
+    );
+
+    observer.observe(medioSection);
   },
 };
 </script>

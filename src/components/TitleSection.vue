@@ -31,28 +31,25 @@
       </button>
     </div>
 
-    <div
-      class="scrollVerMas animate__animated animate__bounce"
-      @click="scrollToMedioSection"
-    >
-      <font-awesome-icon
-        icon="angles-down"
-        class="iconoScroll"
-      ></font-awesome-icon>
+    <div class="scrollVerMas animate__animated animate__bounce">
+      <a href="#medioSection">
+        <font-awesome-icon
+          icon="angles-down"
+          class="iconoScroll"
+        ></font-awesome-icon>
+      </a>
       <p>Scrollea para ver más</p>
     </div>
-
-    <MedioSection ref="medioSection" />
 
     <div class="contenedorBotonIniciar">
       <button
         type="submit"
         class="botonIniciar animate__animated animate__swing"
-        @click="scrollToMedioSection"
       >
         <div class="icono">
           <font-awesome-icon icon="play" class="iconoFlecha" />
         </div>
+        <router-link to="/MedioSection"></router-link>
       </button>
     </div>
 
@@ -89,7 +86,6 @@ import { faGithubAlt } from "@fortawesome/free-brands-svg-icons";
 import { faAnglesDown } from "@fortawesome/free-solid-svg-icons";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import MedioSection from "./MedioSection/MedioSection.vue";
 import MainLayout from "./MainLayout.vue";
 
 library.add(faMagnifyingGlass, faArrowLeft, faPlay, faAnglesDown, faGithubAlt);
@@ -99,7 +95,6 @@ export default {
   name: "TitleSection",
   components: {
     FontAwesomeIcon,
-    MedioSection,
   },
   methods: {
     scrollToMedioSection() {
