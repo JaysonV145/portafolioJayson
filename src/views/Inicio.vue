@@ -7,15 +7,9 @@
   </div>
 </template>
 
-<!--Mala práctica: <script src="../view-logic/Home.js"></script>
--->
-
 <script>
-import Home from "../view-logic/Home.js";
-
 import TitleSection from "../components/TitleSection.vue";
 import MedioSection from "../components/compMedioSection/MedioSection.vue";
-import Carousel from "@/components/Carousel.vue";
 import ProjectSection from "@/components/ProjectSection.vue";
 
 export default {
@@ -25,12 +19,12 @@ export default {
     ProjectSection,
   },
   mounted() {
-    const MedioSection = document.querySelector("#medioSection");
+    const medioSection = document.querySelector("#medioSection");
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            MedioSection.classList.add("animate__slideInUp");
+            medioSection.classList.add("animate__slideInUp");
           }
         });
       },
@@ -54,7 +48,6 @@ export default {
 }
 
 .containerPrincipal > * {
-  /** Aplican espacio con el * a cada hijo de containerPrincipal/ */
-  margin-top: 200px; /* Espacio entre cada componente */
+  margin-top: 250px; /* Espacio entre cada componente */
 }
 </style>

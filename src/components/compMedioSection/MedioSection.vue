@@ -1,6 +1,8 @@
 <template>
+  <h1 class="titulo-general">¡Conóceme!</h1>
   <main>
     <!-- Sección Experiencia -->
+
     <div v-if="!showContent.sobreMi && !showContent.hola" class="titulo-inicio">
       <h1 :class="{ 'titulo-active': showContent.experiencia }">Experiencia</h1>
       <button
@@ -87,18 +89,22 @@ export default {
 </script>
 
 <style scoped>
-/* El estilo permanece igual */
-</style>
-
-<style scoped>
-/* Estilos originales */
+.titulo-general {
+  text-align: center;
+  font-size: 50px;
+  display: flex;
+  position: absolute;
+  bottom: -150px;
+  color: var(--color-blanco); /* Cambia esto según tu esquema de colores */
+}
 main {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  margin: 0 auto;
   gap: 10px;
   height: 50vh;
-  margin-top: 50px;
   justify-content: center;
+
   transition: transform 0.5s ease;
 }
 
@@ -110,7 +116,6 @@ main {
   text-align: center;
   width: 400px;
   color: white;
-  margin-top: 200px;
   position: relative;
   transform: translateX(-10%);
 }

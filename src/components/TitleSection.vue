@@ -32,7 +32,7 @@
     </div>
 
     <div class="scrollVerMas animate__animated animate__bounce">
-      <a href="#medioSection">
+      <a @click="scrollToMedioSection" class="iconoScrollLink">
         <font-awesome-icon
           icon="angles-down"
           class="iconoScroll"
@@ -40,9 +40,9 @@
       </a>
       <p>Scrollea para ver más</p>
     </div>
-
     <div class="contenedorBotonIniciar">
       <button
+        @click="scrollToMedioSection"
         type="submit"
         class="botonIniciar animate__animated animate__swing"
       >
@@ -98,8 +98,10 @@ export default {
   },
   methods: {
     scrollToMedioSection() {
-      const medioSection = this.$refs.medioSection.$el;
-      medioSection.scrollIntoView({ behavior: "smooth" });
+      const medioSection = document.querySelector("#medioSection");
+      if (medioSection) {
+        medioSection.scrollIntoView({ behavior: "smooth" });
+      }
     },
   },
 };
@@ -303,6 +305,14 @@ export default {
   bottom: 25px;
 }
 
+.scrollVerMas a {
+  color: var(--color-blanco);
+}
+
+.scrollVerMas a:hover {
+  background-color: transparent;
+}
+
 .scrollVerMas .iconoScroll {
   height: 30px;
   margin-right: 15px;
@@ -419,10 +429,10 @@ export default {
 
 .redesSociales {
   display: flex;
-  position: relative;
+  position: absolute;
   justify-content: end;
-  bottom: 310px;
-  left: 110px;
+  bottom: 12px;
+  right: 10px;
 }
 
 .redesSociales i {
