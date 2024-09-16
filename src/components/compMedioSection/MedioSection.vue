@@ -90,21 +90,23 @@ export default {
 
 <style scoped>
 .titulo-general {
-  text-align: center;
-  font-size: 50px;
+  font-size: 60px;
   display: flex;
-  position: absolute;
-  bottom: -150px;
+  text-align: center;
+  justify-content: center;
+  position: relative;
+  top: -150px;
   color: var(--color-blanco); /* Cambia esto según tu esquema de colores */
 }
 main {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  margin: 0 auto;
   gap: 10px;
   height: 50vh;
   justify-content: center;
-
+  text-align: center;
+  position: relative;
+  margin: 0 auto;
   transition: transform 0.5s ease;
 }
 
@@ -117,7 +119,7 @@ main {
   width: 400px;
   color: white;
   position: relative;
-  transform: translateX(-10%);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .titulo-inicio h1 {

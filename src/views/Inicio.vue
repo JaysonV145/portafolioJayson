@@ -48,6 +48,6 @@ export default {
 }
 
 .containerPrincipal > * {
-  margin-top: 250px; /* Espacio entre cada componente */
+  margin-top: 280px; /* Espacio entre cada componente */
 }
 </style>
