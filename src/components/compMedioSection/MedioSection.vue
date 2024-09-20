@@ -1,10 +1,23 @@
 <template>
-  <h1 class="titulo-general">¡Conóceme!</h1>
+  <div class="intro-container">
+    <h1 class="titulo-general">¡Conóceme!</h1>
+    <p class="descripcionIntro">
+      A continuación, te invito a explorar más sobre mí y mi trayectoria
+      profesional. Cada sección refleja mi experiencia, habilidades y la pasión
+      que tengo por el desarrollo de software.
+    </p>
+  </div>
   <main>
     <!-- Sección Experiencia -->
 
     <div v-if="!showContent.sobreMi && !showContent.hola" class="titulo-inicio">
       <h1 :class="{ 'titulo-active': showContent.experiencia }">Experiencia</h1>
+      <p class="seccion-descripcion">
+        He tenido el privilegio de trabajar en diversos proyectos que me han
+        permitido adquirir habilidades valiosas y contribuir de manera
+        significativa en el desarrollo de soluciones innovadoras. A
+        continuación, detallo mis experiencias más relevantes.
+      </p>
       <button
         class="botonverMas"
         :class="{ active: showContent.experiencia }"
@@ -21,6 +34,12 @@
       class="titulo-inicio"
     >
       <h1 :class="{ 'titulo-active': showContent.sobreMi }">Sobre mí</h1>
+      <p class="seccion-descripcion">
+        Soy un apasionado desarrollador de software que se esfuerza por combinar
+        creatividad y técnica para resolver problemas complejos. Mi enfoque está
+        en la innovación y el aprendizaje continuo, lo que me permite adaptarme
+        a las necesidades cambiantes del sector tecnológico.
+      </p>
       <button
         class="botonverMas"
         :class="{ active: showContent.sobreMi }"
@@ -37,6 +56,12 @@
       class="titulo-inicio"
     >
       <h1 :class="{ 'titulo-active': showContent.hola }">Habilidades</h1>
+      <p class="seccion-descripcion">
+        A lo largo de mi carrera, he desarrollado una variedad de habilidades
+        técnicas que me permiten abordar proyectos de manera efectiva. Desde el
+        desarrollo front-end hasta la gestión de proyectos, estoy listo para
+        enfrentar cualquier desafío.
+      </p>
       <button
         class="botonverMas"
         :class="{ active: showContent.hola }"
@@ -89,15 +114,33 @@ export default {
 </script>
 
 <style scoped>
+.intro-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: -80px; /* Mueve el contenido hacia arriba */
+  margin-bottom: 80px;
+}
 .titulo-general {
   font-size: 60px;
-  display: flex;
   text-align: center;
-  justify-content: center;
+  color: var(--color-blanco);
+  margin-bottom: 0; /* Elimina el margen inferior del título */
   position: relative;
-  top: -150px;
-  color: var(--color-blanco); /* Cambia esto según tu esquema de colores */
+  right: 40px;
 }
+
+.descripcionIntro {
+  font-size: 14px;
+  color: var(--color-blanco);
+  text-align: center;
+  line-height: 1.6;
+  max-width: 800px; /* Limita el ancho del texto para que no sea tan amplio */
+  margin: 0 auto; /* Centra el párrafo horizontalmente */
+  margin-top: 0; /* Acerca el texto al título */
+}
+
 main {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -119,7 +162,7 @@ main {
   width: 400px;
   color: white;
   position: relative;
-  background-color: rgba(255, 255, 255, 0.1);
+  right: 40px;
 }
 
 .titulo-inicio h1 {
