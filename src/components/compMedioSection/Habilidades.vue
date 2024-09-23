@@ -5,6 +5,20 @@
       class="habilidades"
       :class="{ expand: showContent.hola }"
     >
+      <div class="botonTipoHab">
+        <button>
+          <font-awesome-icon
+            icon="fa-solid fa-laptop-code"
+            class="iconoHab"
+          />Habilidades técnicas
+        </button>
+        <button>
+          <font-awesome-icon
+            icon="fa-solid fa-rocket"
+            class="iconoHab"
+          />Habilidades blandas
+        </button>
+      </div>
       <div class="contenedorHabilidades">
         <!-- Card HTML -->
         <div class="card">
@@ -137,6 +151,7 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import {
   faArrowRightLong,
   faMagnifyingGlass,
+  faRocket,
 } from "@fortawesome/free-solid-svg-icons";
 import { faMinus } from "@fortawesome/free-solid-svg-icons";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
@@ -144,7 +159,9 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { faGithubAlt } from "@fortawesome/free-brands-svg-icons";
 import { faAnglesDown } from "@fortawesome/free-solid-svg-icons";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
+import { faLaptopCode } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
+
 library.add(
   faMagnifyingGlass,
   faArrowLeft,
@@ -153,7 +170,9 @@ library.add(
   faGithubAlt,
   faArrowRight,
   faMinus,
-  faArrowRightLong
+  faArrowRightLong,
+  faLaptopCode,
+  faRocket
 );
 export default {
   components: {
@@ -170,15 +189,53 @@ export default {
   display: flex;
   margin: auto;
   justify-content: center;
-  flex-direction: row;
   width: 1200px;
   height: 40vh;
   border-radius: 10px;
+  margin-left: -110px;
+}
+
+.botonTipoHab {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  top: 10px;
+  left: -110px;
+}
+
+.botonTipoHab button {
+  background-color: transparent;
+  color: white;
+  border: none;
+  border-radius: 32px;
+  width: 160px;
+  height: 40px;
+  padding: 1px;
+  cursor: pointer;
+  margin-right: 15px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.botonTipoHab button:hover {
+  color: #181c23; /* Cambia el color del texto al hacer hover */
+  background-color: var(--color-blanco);
+  transform: scale(1.1); /* Agranda el botón suavemente */
+  transition: 0.5s;
+}
+
+.botonTipoHab button .iconoHab {
+  margin-right: 5px;
+  transition: transform 0.3s ease;
 }
 
 .contenedorHabilidades {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(6, 1fr);
+  position: relative;
+  align-items: center;
   gap: 20px;
   width: 100%;
   box-sizing: border-box;
@@ -195,8 +252,8 @@ export default {
   padding: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
-  width: 320px;
-  height: 300px;
+  width: 320px; /**320px inicial */
+  height: 300px; /**300px */
   box-sizing: border-box;
   overflow: hidden;
   position: relative; /* Necesario para posicionar el botón correctamente */
@@ -209,8 +266,8 @@ export default {
 }
 
 .card img {
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   object-fit: contain;
 }
 
@@ -235,6 +292,7 @@ export default {
   width: 120px; /**100px inicial */
   height: 30px;
   padding: 1px;
+  margin-bottom: 7px;
   background: #181c23;
   color: white;
   border: none;
