@@ -1,7 +1,19 @@
 <template>
   <div class="intro-container">
-    <h1 class="titulo-general">¡Conóceme!</h1>
-    <p class="descripcionIntro">
+    <h1
+      v-if="
+        !showContent.experiencia && !showContent.sobreMi && !showContent.hola
+      "
+      class="titulo-general"
+    >
+      ¡Conóceme!
+    </h1>
+    <p
+      v-if="
+        !showContent.experiencia && !showContent.sobreMi && !showContent.hola
+      "
+      class="descripcionIntro"
+    >
       A continuación, te invito a explorar más sobre mí y mi trayectoria
       profesional. Cada sección refleja mi experiencia, habilidades y la pasión
       que tengo por el desarrollo de software.
@@ -12,7 +24,7 @@
 
     <div v-if="!showContent.sobreMi && !showContent.hola" class="titulo-inicio">
       <h1 :class="{ 'titulo-active': showContent.experiencia }">Experiencia</h1>
-      <p class="seccion-descripcion">
+      <p v-if="!showContent.experiencia" class="seccion-descripcion">
         He tenido el privilegio de trabajar en diversos proyectos que me han
         permitido adquirir habilidades valiosas y contribuir de manera
         significativa en el desarrollo de soluciones innovadoras. A
@@ -34,7 +46,7 @@
       class="titulo-inicio"
     >
       <h1 :class="{ 'titulo-active': showContent.sobreMi }">Sobre mí</h1>
-      <p class="seccion-descripcion">
+      <p v-if="!showContent.sobreMi" class="seccion-descripcion">
         Soy un apasionado desarrollador de software que se esfuerza por combinar
         creatividad y técnica para resolver problemas complejos. Mi enfoque está
         en la innovación y el aprendizaje continuo, lo que me permite adaptarme
@@ -56,7 +68,7 @@
       class="titulo-inicio"
     >
       <h1 :class="{ 'titulo-active': showContent.hola }">Habilidades</h1>
-      <p class="seccion-descripcion">
+      <p v-if="!showContent.hola" class="seccion-descripcion">
         A lo largo de mi carrera, he desarrollado una variedad de habilidades
         técnicas que me permiten abordar proyectos de manera efectiva. Desde el
         desarrollo front-end hasta la gestión de proyectos, estoy listo para
@@ -172,7 +184,7 @@ main {
 
 .titulo-active {
   position: absolute;
-  top: -50px;
+  top: -80px;
   left: -100px;
   animation: slideDown 0.6s ease forwards;
   transform-origin: top;
