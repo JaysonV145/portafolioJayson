@@ -12,8 +12,8 @@
       <h2 class="parrafoBienvenida">Desarrollador de software</h2>
     </div>
 
-    <div class="planetaInicio" alt="FotoPersonal">
-      <img src="@/assets/planeta_sin_fondo.png" />
+    <div class="foto_port" alt="FotoPersonal">
+      <img src="@/assets/foto_port.png" />
     </div>
 
     <div class="botonesInicio">
@@ -109,7 +109,7 @@ export default {
 
 <style scoped>
 .titulo-inicio {
-  width: 1000px;
+  width: 800px; /**1000 px inicial */
   position: relative;
   bottom: 50px; /**Posición del titulo inicial */
   margin-left: -100px;
@@ -118,12 +118,12 @@ export default {
 }
 
 .titulo-inicio h2 {
-  font-size: 80px;
+  font-size: 60px;
   margin-bottom: -60px;
 }
 
 .titulo-inicio .nombreTexto {
-  font-size: 150px;
+  font-size: 130px;
   font-weight: 400;
   margin-bottom: -60px;
 }
@@ -132,16 +132,16 @@ export default {
   color: white;
 }
 
-.planetaInicio {
+.foto_port {
   display: flex;
   position: absolute;
   justify-content: center;
-  right: -100px; /**Se mueve hacia la derecha la imagen */
-  top: 30px;
+  right: 150px; /**Se mueve hacia la derecha la imagen */
+  top: 80px;
 }
 
-.planetaInicio img {
-  height: 700px;
+.foto_port img {
+  height: 600px;
 }
 
 .botonesInicio {
