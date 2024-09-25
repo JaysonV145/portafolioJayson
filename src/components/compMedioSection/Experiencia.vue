@@ -1,51 +1,17 @@
 <template>
   <transition name="fade">
-    <ul
-      v-if="showContent.experiencia"
-      class="experiencia"
-      :class="{ expand: showContent.experiencia }"
-    >
-      <li>
-        <img
-          class="logoHTML"
-          src="@/assets/html_logo.png"
-          style="display: flex; justify-content: center; height: 50px"
-        />
-      </li>
-      <li>
-        Javascript
-        <img
-          class="logoJS"
-          src="@/assets/js_logo.png"
-          style="display: flex; justify-content: center; height: 50px"
-        />
-      </li>
-      <li>
-        Css
-        <img
-          class="logoCSS"
-          src="@/assets/css_logo.png"
-          style="display: flex; justify-content: center; height: 50px"
-        />
-      </li>
-      <li>
-        Vue.js
-        <img
-          class="logoJS"
-          src="@/assets/vue_logo.png"
-          style="display: flex; justify-content: center; height: 50px"
-        />
-      </li>
-      <li>
-        Bootstrap
-        <img
-          class="logoBootstrap"
-          src="@/assets/bootstrap_logo.png"
-          style="display: flex; justify-content: center; height: 50px"
-        />
-      </li>
-      <li>Voiceflow</li>
-    </ul>
+    <div v-if="showContent.experiencia" class="habilidades">
+      <main>
+        <section id="experiencia">
+          <div class="experienciaContenido">
+            <h2 class="cargoTitulo">
+              Desarrollador de Software - Meltec Comunicaciones
+            </h2>
+            <p class="fechaExperiencia">Abril 2024 - Actualidad</p>
+          </div>
+        </section>
+      </main>
+    </div>
   </transition>
 </template>
 
@@ -58,25 +24,46 @@ export default {
 </script>
 
 <style scoped>
-.descripcion {
+.habilidades {
   display: flex;
-  flex-direction: row;
-  position: absolute;
-  margin-top: 50px;
-  right: -800px;
-  list-style: none;
+  align-items: center; /* Centrar verticalmente */
+  justify-content: center; /* Centrar horizontalmente */
+  height: 50vh; /* Altura ajustable según tus necesidades */
+  background-color: #f9f9f9; /* Color de fondo suave */
 }
 
-.descripcion ul li h1 {
-  font-family: "Gupter", serif;
-  font-weight: 400;
-  letter-spacing: 1px;
-  font-size: 80px;
-  margin-bottom: -60px;
+main {
+  display: flex;
+  align-items: center; /* Centrar verticalmente */
+  justify-content: center; /* Centrar horizontalmente */
+  height: 50vh; /* Altura ajustable según tus necesidades */
+  background-color: #f9f9f9; /* Color de fondo suave */
 }
 
-.descripcion.expand {
-  transform: scale(1.6);
-  max-height: 500px;
+#experiencia {
+  width: 100%; /* Ancho completo para la sección */
+}
+
+.experienciaContenido {
+  display: flex;
+  flex-direction: column; /* Organizar en columna */
+  align-items: flex-start; /* Alinear a la izquierda */
+  text-align: left; /* Texto alineado a la izquierda */
+  margin: 0; /* Eliminar márgenes por defecto */
+  padding: 20px; /* Espaciado interno */
+  background-color: white; /* Color de fondo blanco para el contenido */
+  border-radius: 5px; /* Bordes redondeados */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+.cargoTitulo {
+  font-size: 24px; /* Tamaño del título */
+  font-weight: bold; /* Negrita para el título */
+  margin-bottom: 5px; /* Espaciado debajo del título */
+}
+
+.fechaExperiencia {
+  font-size: 16px; /* Tamaño del texto de fecha */
+  color: #666; /* Color gris para la fecha */
 }
 </style>
