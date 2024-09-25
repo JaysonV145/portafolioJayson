@@ -1,145 +1,55 @@
 <template>
   <transition name="fade">
-    <div
-      v-if="showContent.hola"
-      class="habilidades"
-      :class="{ expand: showContent.hola }"
-    >
+    <div v-if="showContent.hola" class="habilidades">
       <div class="botonTipoHab">
         <button>
-          <font-awesome-icon
-            icon="fa-solid fa-laptop-code"
-            class="iconoHab"
-          />Habilidades técnicas
+          <font-awesome-icon icon="fa-solid fa-laptop-code" class="iconoHab" />
+          Habilidades técnicas
         </button>
         <button>
-          <font-awesome-icon
-            icon="fa-solid fa-rocket"
-            class="iconoHab"
-          />Habilidades blandas
+          <font-awesome-icon icon="fa-solid fa-rocket" class="iconoHab" />
+          Habilidades blandas
         </button>
       </div>
       <div class="contenedorHabilidades">
-        <!-- Card HTML -->
-        <div class="card">
-          <img
-            class="logoHTML"
-            src="@/assets/html_logo.png"
-            style="display: flex; justify-content: center; height: 50px"
-          />
-          <h1>HTML</h1>
-          <hr class="divider" />
-          <p class="description">
-            Creación de estructuras web accesibles y semánticas, optimizadas
-            para SEO y compatibilidad con múltiples navegadores.
-          </p>
-          <button type="submit" class="botonTicket">
-            <div class="icono">
-              <font-awesome-icon icon="arrow-right" class="flechaDerecha" />
+        <!-- Carrusel -->
+        <div class="carousel">
+          <div
+            class="carousel-track"
+            :style="{ transform: `translateX(-${currentSlide * 100}%)` }"
+          >
+            <div
+              v-for="(card, index) in slides"
+              :key="index"
+              class="carousel-slide"
+            >
+              <div class="card">
+                <img :src="card.img" :alt="card.title" class="card-image" />
+                <h1>{{ card.title }}</h1>
+                <hr class="divider" />
+                <p class="description">{{ card.description }}</p>
+                <button type="submit" class="botonTicket">
+                  <div class="icono">
+                    <font-awesome-icon
+                      icon="arrow-right"
+                      class="flechaDerecha"
+                    />
+                  </div>
+                  <span>Proyectos</span>
+                </button>
+              </div>
             </div>
-            <span>Proyectos</span>
-          </button>
+          </div>
         </div>
-
-        <div class="card">
-          <img
-            class="logoJS"
-            src="@/assets/js_logo.png"
-            style="display: flex; justify-content: center; height: 50px"
-          />
-          <h1>Javascript</h1>
-          <hr class="divider" />
-          <p class="description">
-            Desarrollo de funcionalidades interactivas con JavaScript, manejando
-            eventos y APIs para mejorar la experiencia del usuario.
-          </p>
-          <button type="submit" class="botonTicket">
-            <div class="icono">
-              <font-awesome-icon icon="arrow-right" class="flechaDerecha" />
-            </div>
-            <span>Proyectos</span>
-          </button>
-        </div>
-
-        <div class="card">
-          <img
-            class="logoCSS"
-            src="@/assets/css_logo.png"
-            style="display: flex; justify-content: center; height: 50px"
-          />
-          <h1>Css</h1>
-          <hr class="divider" />
-          <p class="description">
-            Creación de diseños responsivos y atractivos usando CSS3, con
-            técnicas avanzadas como Flexbox y Grid.
-          </p>
-          <button type="submit" class="botonTicket">
-            <div class="icono">
-              <font-awesome-icon icon="arrow-right" class="flechaDerecha" />
-            </div>
-            <span>Proyectos</span>
-          </button>
-        </div>
-
-        <div class="card">
-          <img
-            class="logoJS"
-            src="@/assets/vue_logo.png"
-            style="display: flex; justify-content: center; height: 50px"
-          />
-          <h1>Vue.js</h1>
-          <hr class="divider" />
-          <p class="description">
-            Construcción de aplicaciones reactivas con Vue.js, gestionando el
-            estado y creando interfaces dinámicas.
-          </p>
-          <button type="submit" class="botonTicket">
-            <div class="icono">
-              <font-awesome-icon icon="arrow-right" class="flechaDerecha" />
-            </div>
-            <span>Proyectos</span>
-          </button>
-        </div>
-
-        <div class="card">
-          <img
-            class="logoBootstrap"
-            src="@/assets/bootstrap_logo.png"
-            style="display: flex; justify-content: center; height: 50px"
-          />
-          <h1>Bootstrap</h1>
-          <hr class="divider" />
-          <p class="description">
-            Uso de Bootstrap para diseñar interfaces web responsivas y
-            coherentes, aprovechando su sistema de cuadrícula y componentes.
-          </p>
-          <button type="submit" class="botonTicket">
-            <div class="icono">
-              <font-awesome-icon icon="arrow-right" class="flechaDerecha" />
-            </div>
-            <span>Proyectos</span>
-          </button>
-        </div>
-
-        <div class="card">
-          <img
-            class="logoBootstrap"
-            src="@/assets/voiceflow_logo.png"
-            style="display: flex; justify-content: center; height: 50px"
-          />
-          <h1>Voiceflow</h1>
-          <hr class="divider" />
-          <p class="description">
-            Desarrollo de flujos de conversación para chatbots con Voiceflow,
-            optimizando la interacción del usuario en aplicaciones de voz y
-            texto.
-          </p>
-          <button type="submit" class="botonTicket">
-            <div class="icono">
-              <font-awesome-icon icon="arrow-right" class="flechaDerecha" />
-            </div>
-            <span>Proyectos</span>
-          </button>
+        <!-- Puntos de navegación -->
+        <div class="carousel-dots">
+          <span
+            v-for="(dot, index) in totalSlides"
+            :key="index"
+            class="dot"
+            :class="{ active: currentSlide === index }"
+            @click="goToSlide(index)"
+          ></span>
         </div>
       </div>
     </div>
@@ -181,6 +91,74 @@ export default {
   props: {
     showContent: Object,
   },
+  data() {
+    return {
+      currentSlide: 0,
+      slides: [
+        {
+          img: "@/assets/html_logo.png",
+          title: "HTML",
+          description: "Creación de estructuras web accesibles y semánticas.",
+        },
+        {
+          img: "@/assets/js_logo.png",
+          title: "JavaScript",
+          description:
+            "Desarrollo de funcionalidades interactivas con JavaScript.",
+        },
+        {
+          img: "@/assets/css_logo.png",
+          title: "CSS",
+          description:
+            "Creación de diseños responsivos y atractivos usando CSS3.",
+        },
+        {
+          img: "@/assets/vue_logo.png",
+          title: "Vue.js",
+          description: "Construcción de aplicaciones reactivas con Vue.js.",
+        },
+        {
+          img: "@/assets/bootstrap_logo.png",
+          title: "Bootstrap",
+          description:
+            "Uso de Bootstrap para diseñar interfaces web responsivas.",
+        },
+        {
+          img: "@/assets/voiceflow_logo.png",
+          title: "Gihub",
+          description: "Desarrollo de flujos de conversación con Voiceflow.",
+        },
+        {
+          img: "@/assets/voiceflow_logo.png",
+          title: "Voiceflow",
+          description: "Desarrollo de flujos de conversación con Voiceflow.",
+        },
+        {
+          img: "@/assets/voiceflow_logo.png",
+          title: "Diseño UX/UI",
+          description: "Desarrollo de flujos de conversación con Voiceflow.",
+        },
+      ],
+    };
+  },
+  computed: {
+    totalSlides() {
+      return Math.ceil(this.slides.length / 4); // Agrupa en conjuntos de 4
+    },
+  },
+  methods: {
+    goToSlide(index) {
+      this.currentSlide = index;
+    },
+    autoSlide() {
+      setInterval(() => {
+        this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
+      }, 10000); // Cambia de slide cada 5 segundos
+    },
+  },
+  mounted() {
+    this.autoSlide();
+  },
 };
 </script>
 
@@ -193,6 +171,43 @@ export default {
   height: 40vh;
   border-radius: 10px;
   margin-left: -110px;
+}
+.carousel {
+  width: 1400px;
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+  min-width: 25%; /* Mostrar 4 tarjetas a la vez */
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.dot {
+  /**Estos son los puntos del carrusel */
+  height: 10px;
+  width: 10px;
+  margin: 0 5px;
+  background-color: #333;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dot.active {
+  background-color: #ccc;
 }
 
 .botonTipoHab {
