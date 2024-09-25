@@ -87,6 +87,10 @@
 </template>
 
 <script>
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { library } from "@fortawesome/fontawesome-svg-core";
 import { ref } from "vue";
 import Experiencia from "./Experiencia.vue";
 import SobreMi from "./SobreMi.vue";
@@ -131,7 +135,7 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: -80px; /* Mueve el contenido hacia arriba */
+  margin-top: -50px; /* Mueve el contenido hacia arriba */
   margin-bottom: 80px;
 }
 .titulo-general {
@@ -174,7 +178,7 @@ main {
   width: 400px;
   color: white;
   position: relative;
-  right: 40px;
+  right: 40px; /**Cambiar y modificar, esto es lo que esta cambiando todo */
 }
 
 .titulo-inicio h1 {
@@ -204,7 +208,7 @@ main {
 .botonverMas.active {
   position: relative;
   left: -150px;
-  bottom: -700px; /**Cambiar */
+  top: -150px; /**Cambiar */
   transform: scale(1.1);
   background-color: var(--color-verde-hover);
   animation: slideDown 2s ease forwards;

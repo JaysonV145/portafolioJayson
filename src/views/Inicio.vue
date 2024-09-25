@@ -40,6 +40,7 @@ export default {
 
 <style scoped>
 .containerPrincipal {
+  display: flex;
   flex-direction: column;
   margin-bottom: 50px;
   width: 100%;
@@ -49,5 +50,6 @@ export default {
 
 .containerPrincipal > * {
   margin-top: 280px; /* Espacio entre cada componente */
+  width: 100%;
 }
 </style>

@@ -2,7 +2,10 @@
   <transition name="fade">
     <div v-if="showContent.hola" class="habilidades">
       <div class="botonTipoHab">
-        <button>
+        <button
+          :class="{ active: activeButton === 'tecnicas' }"
+          @click="activeButton = 'tecnicas'"
+        >
           <font-awesome-icon icon="fa-solid fa-laptop-code" class="iconoHab" />
           Habilidades técnicas
         </button>
@@ -41,22 +44,31 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="carousel-indicators">
         <!-- Puntos de navegación -->
-        <div class="carousel-dots">
-          <span
-            v-for="(dot, index) in totalSlides"
-            :key="index"
-            class="dot"
-            :class="{ active: currentSlide === index }"
-            @click="goToSlide(index)"
-          ></span>
-        </div>
+        <span
+          v-for="(dot, index) in totalSlides"
+          :key="index"
+          class="dot"
+          :class="{ active: currentSlide === index }"
+          @click="goToSlide(index)"
+        ></span>
       </div>
     </div>
   </transition>
 </template>
 
 <script>
+import htmlLogo from "@/assets/html_logo.png";
+import jsLogo from "@/assets/js_logo.png";
+import cssLogo from "@/assets/css_logo.png";
+import vueLogo from "@/assets/vue_logo.png";
+import bootstrapLogo from "@/assets/bootstrap_logo.png";
+import voiceflowLogo from "@/assets/voiceflow_logo.png";
+import githubLogo from "@/assets/github_logo.png";
+import appsheetLogo from "@/assets/appsheet_logo.png";
+
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import {
   faArrowRightLong,
@@ -94,49 +106,55 @@ export default {
   data() {
     return {
       currentSlide: 0,
+      activeButton: "tecnicas",
       slides: [
         {
-          img: "@/assets/html_logo.png",
+          img: htmlLogo,
           title: "HTML",
-          description: "Creación de estructuras web accesibles y semánticas.",
+          description:
+            "Creación de estructuras web accesibles y semánticas, optimizadas para SEO y compatibilidad con múltiples navegadores.",
         },
         {
-          img: "@/assets/js_logo.png",
+          img: jsLogo,
           title: "JavaScript",
           description:
-            "Desarrollo de funcionalidades interactivas con JavaScript.",
+            "Desarrollo de funcionalidades interactivas con JavaScript, manejando eventos y APIs para mejorar la experiencia del usuario.",
         },
         {
-          img: "@/assets/css_logo.png",
+          img: cssLogo,
           title: "CSS",
           description:
-            "Creación de diseños responsivos y atractivos usando CSS3.",
+            "Creación de diseños responsivos y atractivos usando CSS3, con técnicas avanzadas como Flexbox y Grid.",
         },
         {
-          img: "@/assets/vue_logo.png",
+          img: vueLogo,
           title: "Vue.js",
-          description: "Construcción de aplicaciones reactivas con Vue.js.",
+          description:
+            "Construcción de aplicaciones con Vue.js, gestionando el estado y creando interfaces dinámicas.",
         },
         {
-          img: "@/assets/bootstrap_logo.png",
+          img: bootstrapLogo,
           title: "Bootstrap",
           description:
-            "Uso de Bootstrap para diseñar interfaces web responsivas.",
+            "Uso de Bootstrap para diseñar interfaces web responsivas y coherentes, aprovechando su sistema de cuadrícula y componentes.",
         },
         {
-          img: "@/assets/voiceflow_logo.png",
-          title: "Gihub",
-          description: "Desarrollo de flujos de conversación con Voiceflow.",
+          img: githubLogo,
+          title: "GitHub",
+          description:
+            "Gestión de control de versiones utilizando GitHub, colaborando en proyectos de software mediante ramas, pull requests y seguimiento de cambios.",
         },
         {
-          img: "@/assets/voiceflow_logo.png",
+          img: appsheetLogo,
+          title: "Appsheet",
+          description:
+            "Desarrollo de aplicaciones con AppSheet, automatizando procesos empresariales y mejorando la productividad a través de integraciones con datos en la nube.",
+        },
+        {
+          img: voiceflowLogo,
           title: "Voiceflow",
-          description: "Desarrollo de flujos de conversación con Voiceflow.",
-        },
-        {
-          img: "@/assets/voiceflow_logo.png",
-          title: "Diseño UX/UI",
-          description: "Desarrollo de flujos de conversación con Voiceflow.",
+          description:
+            "Desarrollo de flujos de conversación para chatbots con Voiceflow, optimizando la interacción del usuario en aplicaciones de voz y texto.",
         },
       ],
     };
@@ -163,18 +181,27 @@ export default {
 </script>
 
 <style scoped>
-.habilidades {
-  display: flex;
-  margin: auto;
-  justify-content: center;
-  width: 1200px;
-  height: 40vh;
-  border-radius: 10px;
-  margin-left: -110px;
-}
 .carousel {
-  width: 1400px;
+  position: relative;
+  width: 1450px;
+  height: 50vh;
   overflow: hidden;
+}
+
+.carousel-indicators {
+  display: flex;
+  justify-content: center; /* Centra los puntos horizontalmente */
+  position: absolute; /* Posición absoluta para poder moverlos */
+  bottom: -50px;
+}
+
+.indicator {
+  height: 10px; /* Altura del punto */
+  width: 10px; /* Ancho del punto */
+  margin: 0 5px; /* Espacio entre puntos */
+  background-color: gray; /* Color por defecto */
+  border-radius: 50%; /* Forma circular */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el punto */
 }
 
 .carousel-track {
@@ -202,12 +229,22 @@ export default {
   background-color: #333;
   border-radius: 50%;
   display: inline-block;
+  justify-content: center; /**Para centrar los dots */
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
 .dot.active {
   background-color: #ccc;
+}
+.habilidades {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  width: 1450px;
+  height: 40vh;
+  border-radius: 10px;
+  margin-left: -110px;
 }
 
 .botonTipoHab {
@@ -267,7 +304,7 @@ export default {
   padding: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
-  width: 320px; /**320px inicial */
+  width: 340px; /**340px inicial */
   height: 300px; /**300px */
   box-sizing: border-box;
   overflow: hidden;
