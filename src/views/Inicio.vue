@@ -4,6 +4,7 @@
     <div id="medioSection" class="animate__animated animate__slideInUp">
       <MedioSection></MedioSection>
     </div>
+    <Habilidades />
   </div>
 </template>
 
@@ -11,12 +12,14 @@
 import TitleSection from "../components/TitleSection.vue";
 import MedioSection from "../components/compMedioSection/MedioSection.vue";
 import ProjectSection from "@/components/ProjectSection.vue";
+import Habilidades from "@/components/Habilidades.vue";
 
 export default {
   components: {
     TitleSection,
-    MedioSection,
+
     ProjectSection,
+    Habilidades,
   },
   mounted() {
     const medioSection = document.querySelector("#medioSection");

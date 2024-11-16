@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <div v-if="showContent.hola" class="habilidades">
+    <div class="habilidades">
       <div class="botonTipoHab">
         <button
           :class="{ active: activeButton === 'tecnicas' }"
@@ -97,6 +97,7 @@ library.add(
   faRocket
 );
 export default {
+  name: "Habilidades",
   components: {
     FontAwesomeIcon,
   },
@@ -389,7 +390,7 @@ export default {
 /*.botonTicket:hover .icono {*/
 /*  background-color: #000000; /* Cambia el fondo del icono a negro al pasar el cursor */
 /* color: var(--color-blanco);
-}*/
+  }*/
 
 .botonTicket .icono {
   display: flex;

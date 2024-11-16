@@ -1,17 +1,13 @@
 <template>
   <div class="intro-container">
     <h1
-      v-if="
-        !showContent.experiencia && !showContent.sobreMi && !showContent.hola
-      "
+      v-if="!showContent.experiencia && !showContent.sobreMi"
       class="titulo-general"
     >
       ¡Conóceme!
     </h1>
     <p
-      v-if="
-        !showContent.experiencia && !showContent.sobreMi && !showContent.hola
-      "
+      v-if="!showContent.experiencia && !showContent.sobreMi"
       class="descripcionIntro"
     >
       A continuación, te invito a explorar más sobre mí y mi trayectoria
@@ -41,10 +37,7 @@
     </div>
 
     <!-- Sección Sobre mí -->
-    <div
-      v-if="!showContent.experiencia && !showContent.hola"
-      class="titulo-inicio"
-    >
+    <div v-if="!showContent.experiencia" class="titulo-inicio">
       <h1 :class="{ 'titulo-active': showContent.sobreMi }">Sobre mí</h1>
       <p v-if="!showContent.sobreMi" class="seccion-descripcion">
         Soy un apasionado desarrollador de software que se esfuerza por combinar
@@ -63,26 +56,6 @@
     </div>
 
     <!-- Sección Habilidades -->
-    <div
-      v-if="!showContent.experiencia && !showContent.sobreMi"
-      class="titulo-inicio"
-    >
-      <h1 :class="{ 'titulo-active': showContent.hola }">Habilidades</h1>
-      <p v-if="!showContent.hola" class="seccion-descripcion">
-        A lo largo de mi carrera, he desarrollado una variedad de habilidades
-        técnicas que me permiten abordar proyectos de manera efectiva. Desde el
-        desarrollo front-end hasta la gestión de proyectos, estoy listo para
-        enfrentar cualquier desafío.
-      </p>
-      <button
-        class="botonverMas"
-        :class="{ active: showContent.hola }"
-        @click="toggleContent('hola')"
-      >
-        {{ showContent.hola ? "Ver menos" : "Ver más" }}
-      </button>
-      <Habilidades :showContent="showContent" />
-    </div>
   </main>
 </template>
 
@@ -94,14 +67,12 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { ref } from "vue";
 import Experiencia from "./Experiencia.vue";
 import SobreMi from "./SobreMi.vue";
-import Habilidades from "./Habilidades.vue";
 
 export default {
   name: "MedioSection",
   components: {
     Experiencia,
     SobreMi,
-    Habilidades,
   },
   setup() {
     const showContent = ref({
