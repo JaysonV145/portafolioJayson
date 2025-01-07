@@ -1,21 +1,26 @@
 <template>
-  <main>
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-      rel="stylesheet"
-    />
-
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    rel="stylesheet"
+  />
+  <div class="contenedor_padre">
     <div class="titulo-inicio">
-      <h2>¡Hola! Soy</h2>
+      <img
+        src="../assets/foto_perfil.jpg"
+        alt="Jayson Vargas"
+        class="imagen_perfil"
+      />
+      <p>¡Hola! Soy Jayson Vargas 👋</p>
+      <h2 class="texto-gradiente">
+        Construyendo, diseñando, y creando experiencias
+      </h2>
+      <h class="desc_titulo">
+        Soy un desarrollador de software apasionado por diseñar y construir
+        experiencias digitales impactantes y funcionales. Me especializo en
+        crear
+      </h>
       <!--Soy desarrollador de software-->
-      <h1 class="nombreTexto">Jayson Vargas</h1>
-      <h2 class="parrafoBienvenida">Desarrollador de software</h2>
     </div>
-
-    <div class="foto_port" alt="FotoPersonal">
-      <img src="@/assets/foto_port.png" />
-    </div>
-
     <div class="botonesInicio">
       <button type="submit" class="botonTicket">
         <div class="icono">
@@ -30,16 +35,18 @@
         </svg>
       </button>
     </div>
+  </div>
 
-    <div class="scrollVerMas animate__animated animate__bounce">
-      <a @click="scrollToMedioSection" class="iconoScrollLink">
-        <font-awesome-icon
-          icon="angles-down"
-          class="iconoScroll"
-        ></font-awesome-icon>
-      </a>
-      <p>Scrollea para ver más</p>
-    </div>
+  <div class="scrollVerMas animate__animated animate__bounce">
+    <a @click="scrollToMedioSection" class="iconoScrollLink">
+      <font-awesome-icon
+        icon="angles-down"
+        class="iconoScroll"
+      ></font-awesome-icon>
+    </a>
+    <p>Scrollea para ver más</p>
+  </div>
+  <!--
     <div class="contenedorBotonIniciar">
       <button
         @click="scrollToMedioSection"
@@ -52,30 +59,30 @@
         <router-link to="/MedioSection"></router-link>
       </button>
     </div>
+-->
+  <div class="redesSociales">
+    <a href="https://github.com/JaysonV145" target="_blank">
+      <i class="fa-brands fa-github"></i
+    ></a>
+    <a href="https://www.linkedin.com/in/jayson-vargas" target="_blank">
+      <i class="fa-brands fa-linkedin-in"></i>
+    </a>
+    <a href="https://wa.link/8eu07e" target="_blank"
+      ><i class="fa-brands fa-whatsapp"></i
+    ></a>
+    <a href="mailto:vjaison30@gmail.com" target="_blank"
+      ><i class="fa-regular fa-envelope"></i
+    ></a>
+  </div>
 
-    <div class="redesSociales">
-      <a href="https://github.com/JaysonV145" target="_blank">
-        <i class="fa-brands fa-github"></i
-      ></a>
-      <a href="https://www.linkedin.com/in/jayson-vargas" target="_blank">
-        <i class="fa-brands fa-linkedin-in"></i>
-      </a>
-      <a href="https://wa.link/8eu07e" target="_blank"
-        ><i class="fa-brands fa-whatsapp"></i
-      ></a>
-      <a href="mailto:vjaison30@gmail.com" target="_blank"
-        ><i class="fa-regular fa-envelope"></i
-      ></a>
-    </div>
-    <!--Datalist hace que esten las opciones abajo como del historial
-    <input list="planetas" />
-
+  <!--Datalist hace que esten las opciones abajo como del historial
+      <input list="planetas" />
+      
       <option>saturno</option>
       <option>urano</option>
       <option>marte</option>
       <option>centaurus</option>
     </datalist>-->
-  </main>
 </template>
 
 <script>
@@ -108,40 +115,55 @@ export default {
 </script>
 
 <style scoped>
+.contenedor_padre {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente el contenedor */
+  align-items: center;
+  flex-direction: column;
+}
+
 .titulo-inicio {
-  width: 800px; /**1000 px inicial */
   position: relative;
-  bottom: 50px; /**Posición del titulo inicial */
-  margin-left: -100px;
-  margin-bottom: 90px; /**Separacion con botón */
-  color: white;
+  text-align: center;
+  width: 650px;
+  bottom: 100px;
+  color: #f5efeb; /**c8d9e6**/
 }
 
 .titulo-inicio h2 {
-  font-size: 60px;
-  margin-bottom: -60px;
+  font-size: 55px;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.texto-gradiente {
+  font-size: 24px;
+  font-weight: bold;
+  background: linear-gradient(
+    to right,
+    #ffffff,
+    rgba(218, 194, 194, 0)
+  ); /**crea un gradiente que va de blanco sólido a transparente de izquierda a derecha */
+  background-clip: text; /**Hace que el fondo (el gradiente) solo sea visible dentro del área del texto. */
+  -webkit-text-fill-color: transparent; /* Hace que el texto sea transparente */
+}
+
+.desc_titulo {
+  position: relative;
+  bottom: 20px;
+}
+
+.imagen_perfil {
+  width: 110px; /* Tamaño de la imagen */
+  height: 110px; /* Asegura que sea cuadrada para el borde circular */
+  border-radius: 50%; /* Hace la imagen circular */
+  margin: 0 auto 0 auto; /* Centra la imagen y añade espacio debajo si se quiere */
+  object-fit: cover; /* Asegura que la imagen se recorte correctamente si no es cuadrada */
 }
 
 .titulo-inicio .nombreTexto {
-  font-size: 130px;
+  font-size: 50px;
   font-weight: 400;
-  margin-bottom: -60px;
-}
-
-.parrafoBienvenida {
-  color: white;
-}
-
-.foto_port {
-  display: flex;
-  position: absolute;
-  justify-content: center;
-  right: 150px; /**Se mueve hacia la derecha la imagen */
-  top: 80px;
-}
-
-.foto_port img {
-  height: 600px;
 }
 
 .botonesInicio {
@@ -152,8 +174,7 @@ export default {
   width: 500px;
   height: 50px;
   position: relative;
-  bottom: 80px; /**Posicion de los botones, cercanos al título */
-  right: 100px;
+  bottom: 80px; /**Posición de botones  */
 }
 
 .botonTicket {
@@ -165,7 +186,8 @@ export default {
   width: 100%;
   height: 100%;
   padding: 15px;
-  background-color: var(--color-verde);
+  background: linear-gradient(135deg, #004e7c, #00b8b8); /**PRUEBAS */
+  border: none;
   color: var(--color-blanco);
   cursor: pointer;
   margin: 5px 5px 5px 5px;
@@ -196,7 +218,6 @@ export default {
   right: 10px;
   transform: scale(0.45); /* Centra verticalmente el icon y tambien el tamaño */
   transition: 0.4s ease-in-out all; /*Transición de vuelta*/
-
   opacity: 0; /** Lo vuelve invisible*/
 }
 
@@ -213,7 +234,7 @@ export default {
 }
 
 .botonTicket:hover {
-  background-color: var(--color-verde-hover);
+  background-color: var(--color-gris-fondo);
   transition: 0.5s;
 }
 
@@ -223,7 +244,7 @@ export default {
   height: 100%;
   border: none;
   padding: 15px;
-  background-color: transparent;
+  background-color: var(--color-gris-fondo);
   color: var(--color-blanco);
   cursor: pointer;
   margin: 5px 5px 5px 5px;
@@ -300,9 +321,9 @@ export default {
 .scrollVerMas {
   display: flex;
   position: absolute;
-  left: 100px;
+  left: 30px;
   cursor: pointer;
-  bottom: 25px;
+  bottom: 10px;
 }
 
 .scrollVerMas a {
@@ -314,6 +335,8 @@ export default {
 }
 
 .scrollVerMas .iconoScroll {
+  position: relative;
+  bottom: -10px; /**Necesario, posición mejor alienada del botón con scrollea para ver más */
   height: 30px;
   margin-right: 15px;
   animation: animacionBotonScroll 2s infinite; /**Duración animacion */
@@ -358,8 +381,8 @@ export default {
   align-items: center;
   border: none;
   padding: 30px;
-  background-color: var(--color-verde);
-  color: var(--color-blanco);
+  background-color: var(--color-blanco);
+  color: var(--color-gris-fondo);
   cursor: pointer;
   text-align: center;
   width: 50px; /* Ajusta el ancho del botón */
@@ -417,7 +440,7 @@ export default {
 
 .botonIniciar svg {
   /**Tamaño icono */
-  color: var(--color-blanco);
+  color: var(--color-gris-fondo);
   width: 35px;
   height: 35px;
 }

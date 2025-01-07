@@ -1,6 +1,6 @@
 <template>
   <header class="space-header">
-    <h1 class="title">Space Landing</h1>
+    <h1 class="title">Jayson Vargas</h1>
     <nav class="navegacion">
       <ul>
         <li><router-link to="/">Inicio</router-link></li>

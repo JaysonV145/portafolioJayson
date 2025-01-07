@@ -1,6 +1,7 @@
 <template>
   <transition name="fade">
-    <div class="habilidades">
+    <div class="contenedorPrincipal">
+      <h1 class="tituloSeccion">Servicios y habilidades</h1>
       <div class="botonTipoHab">
         <button
           :class="{ active: activeButton === 'tecnicas' }"
@@ -14,46 +15,49 @@
           Habilidades blandas
         </button>
       </div>
-      <div class="contenedorHabilidades">
-        <!-- Carrusel -->
-        <div class="carousel">
-          <div
-            class="carousel-track"
-            :style="{ transform: `translateX(-${currentSlide * 100}%)` }"
-          >
+
+      <div class="habilidades">
+        <div class="contenedorHabilidades">
+          <!-- Carrusel -->
+          <div class="carousel">
             <div
-              v-for="(card, index) in slides"
-              :key="index"
-              class="carousel-slide"
+              class="carousel-track"
+              :style="{ transform: `translateX(-${currentSlide * 100}%)` }"
             >
-              <div class="card">
-                <img :src="card.img" :alt="card.title" class="card-image" />
-                <h1>{{ card.title }}</h1>
-                <hr class="divider" />
-                <p class="description">{{ card.description }}</p>
-                <button type="submit" class="botonTicket">
-                  <div class="icono">
-                    <font-awesome-icon
-                      icon="arrow-right"
-                      class="flechaDerecha"
-                    />
-                  </div>
-                  <span>Proyectos</span>
-                </button>
+              <div
+                v-for="(card, index) in slides"
+                :key="index"
+                class="carousel-slide"
+              >
+                <div class="card">
+                  <img :src="card.img" :alt="card.title" class="card-image" />
+                  <h1>{{ card.title }}</h1>
+                  <hr class="divider" />
+                  <p class="description">{{ card.description }}</p>
+                  <button type="submit" class="botonTicket">
+                    <div class="icono">
+                      <font-awesome-icon
+                        icon="arrow-right"
+                        class="flechaDerecha"
+                      />
+                    </div>
+                    <span>Proyectos</span>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="carousel-indicators">
-        <!-- Puntos de navegación -->
-        <span
-          v-for="(dot, index) in totalSlides"
-          :key="index"
-          class="dot"
-          :class="{ active: currentSlide === index }"
-          @click="goToSlide(index)"
-        ></span>
+        <div class="carousel-indicators">
+          <!-- Puntos de navegación -->
+          <span
+            v-for="(dot, index) in totalSlides"
+            :key="index"
+            class="dot"
+            :class="{ active: currentSlide === index }"
+            @click="goToSlide(index)"
+          ></span>
+        </div>
       </div>
     </div>
   </transition>
@@ -182,6 +186,14 @@ export default {
 </script>
 
 <style scoped>
+.tituloSeccion {
+  font-size: 60px;
+  color: var(--color-blanco);
+
+  text-align: center;
+  margin-bottom: 20px;
+}
+
 .carousel {
   position: relative;
   width: 1450px;
@@ -212,7 +224,6 @@ export default {
 
 .carousel-slide {
   min-width: 25%; /* Mostrar 4 tarjetas a la vez */
-  box-sizing: border-box;
   padding: 10px;
 }
 
@@ -231,6 +242,8 @@ export default {
   border-radius: 50%;
   display: inline-block;
   justify-content: center; /**Para centrar los dots */
+  align-items: center;
+  position: relative;
   cursor: pointer;
   transition: background-color 0.3s;
 }
@@ -238,22 +251,11 @@ export default {
 .dot.active {
   background-color: #ccc;
 }
-.habilidades {
-  display: flex;
-  margin: auto;
-  justify-content: center;
-  width: 1450px;
-  height: 40vh;
-  border-radius: 10px;
-  margin-left: -110px;
-}
 
 .botonTipoHab {
-  position: absolute;
   display: flex;
   flex-direction: row;
-  top: 10px;
-  left: -110px;
+  margin-left: 70px;
 }
 
 .botonTipoHab button {
@@ -284,13 +286,22 @@ export default {
   transition: transform 0.3s ease;
 }
 
+.habilidades {
+  display: flex;
+  margin: auto;
+  justify-content: center; /**Esto centra todo, los dots y demas. No cambiar */
+  width: 100%;
+  height: auto;
+}
+
 .contenedorHabilidades {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat((6, 1fr));
   position: relative;
   align-items: center;
-  gap: 20px;
-  width: 100%;
+  justify-content: center;
+  justify-items: center;
+  gap: 10px;
   box-sizing: border-box;
 }
 

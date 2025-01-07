@@ -41,7 +41,7 @@ main {
   height: 150px;
 }
 
-.habilidades {
+.experiencia {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -58,8 +58,9 @@ main {
 .experienciaContenido {
   flex: 1; /* Distribuye el ancho de cada columna de manera uniforme */
   display: flex;
+  justify-content: center;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   text-align: left;
   padding: 20px 30px;
   border-right: 2px solid #ccc;
