@@ -42,7 +42,7 @@
         />
         <div class="descripcion-proyecto">
           <h1>Asistente virtual</h1>
-          <p class="descripcion">Text to speech.</p>
+          <p class="descripcion">En proceso...</p>
         </div>
         <div class="opcionesProyecto">
           <button>
@@ -65,7 +65,7 @@
         />
         <div class="descripcion-proyecto">
           <h1>Landing page Salud</h1>
-          <p class="descripcion">Interfaz de página front-end y back-end.</p>
+          <p class="descripcion">En proceso...</p>
         </div>
         <div class="opcionesProyecto">
           <button>
@@ -75,12 +75,10 @@
             <span><font-awesome-icon icon="pen-fancy" /></span>Airtable
           </button>
           <button>
-            <span><font-awesome-icon icon="file-code" /></span>Make
+            <span><font-awesome-icon icon="file-code" /></span>Figma
           </button>
           <button>
-            <a
-              href="https://github.com/JaysonV145/proyecto_katta-s"
-              target="_blank"
+            <a href="https://github.com/JaysonV145" target="_blank"
               ><span><font-awesome-icon icon="up-right-from-square" /></span
               >Proyecto</a
             >

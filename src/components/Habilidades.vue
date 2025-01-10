@@ -72,6 +72,8 @@ import bootstrapLogo from "@/assets/bootstrap_logo.png";
 import voiceflowLogo from "@/assets/voiceflow_logo.png";
 import githubLogo from "@/assets/github_logo.png";
 import appsheetLogo from "@/assets/appsheet_logo.png";
+import figmaLogo from "@/assets/figma_logo.png";
+import SketchLogo from "@/assets/sketch_logo.png";
 
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import {
@@ -114,6 +116,18 @@ export default {
       activeButton: "tecnicas",
       slides: [
         {
+          img: figmaLogo,
+          title: "Figma",
+          description:
+            "Diseño de interfaces de usuario con Figma, creando wireframes, prototipos y mockups interactivos para aplicaciones web y móviles, mejorando la experiencia del usuario.",
+        },
+        {
+          img: SketchLogo,
+          title: "Sketch",
+          description:
+            "Diseño de prototipos y mockups enfocados en usabilidad y estética para aplicaciones digitales.",
+        },
+        {
           img: htmlLogo,
           title: "HTML",
           description:
@@ -149,12 +163,7 @@ export default {
           description:
             "Gestión de control de versiones utilizando GitHub, colaborando en proyectos de software mediante ramas, pull requests y seguimiento de cambios.",
         },
-        {
-          img: appsheetLogo,
-          title: "Appsheet",
-          description:
-            "Desarrollo de aplicaciones con AppSheet, automatizando procesos empresariales y mejorando la productividad a través de integraciones con datos en la nube.",
-        },
+
         {
           img: voiceflowLogo,
           title: "Voiceflow",

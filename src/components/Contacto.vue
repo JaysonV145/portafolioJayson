@@ -24,7 +24,6 @@
         <p>
           <span><font-awesome-icon icon="phone" /></span>+57 3224283163
         </p>
-        <p>LinkedIn</p>
       </div>
     </div>
     <div class="fondo-verde"></div>
