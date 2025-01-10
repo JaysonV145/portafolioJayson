@@ -64,7 +64,7 @@
           class="imagen-proyecto"
         />
         <div class="descripcion-proyecto">
-          <h1>Katta's Web</h1>
+          <h1>Landing page Salud</h1>
           <p class="descripcion">Interfaz de página front-end y back-end.</p>
         </div>
         <div class="opcionesProyecto">
