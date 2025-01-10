@@ -105,11 +105,7 @@ export default {
           duration: "Marzo 2024 - Octubre 2024",
           description: "Diseño de interfaces intuitivas y atractivas.",
           icon: "fas fa-palette",
-          skills: [
-            { name: "Figma" },
-            { name: "Adobe XD" },
-            { name: "User Research" },
-          ],
+          skills: [{ name: "Figma" }, { name: "Vue.js" }, { name: "CSS" }],
         },
       ],
       hoveredIndex: null,
