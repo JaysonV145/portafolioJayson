@@ -15,9 +15,10 @@
         Construyendo, diseñando, y creando experiencias
       </h2>
       <h class="desc_titulo">
-        Soy un desarrollador de software apasionado por diseñar y construir
-        experiencias digitales impactantes y funcionales. Me especializo en
-        crear
+        Desarrollador de software con una visión clara: transformar ideas en
+        soluciones digitales que realmente resuelvan problemas y mejoren la vida
+        de los usuarios. Me apasiona crear aplicaciones que no solo funcionen
+        bien, sino que sean intuitivas, innovadoras y visualmente atractivas.
       </h>
       <!--Soy desarrollador de software-->
     </div>
@@ -175,7 +176,7 @@ export default {
   width: 500px;
   height: 50px;
   position: relative;
-  bottom: 80px; /**Posición de botones  */
+  bottom: 120px; /**Posición de botones  */
 }
 
 .botonTicket {
@@ -243,7 +244,7 @@ export default {
   position: relative;
   width: 100%;
   height: 100%;
-  border: none;
+  border: 1px solid var(--color-blanco);
   padding: 15px;
   background-color: var(--color-gris-fondo);
   color: var(--color-blanco);
@@ -267,7 +268,7 @@ export default {
   fill: none;
 }
 
-.botonDestino rect {
+/*.botonDestino rect {
   width: 100%;
   height: 50px;
   stroke: var(--color-blanco);
@@ -275,7 +276,7 @@ export default {
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
   transition: 1.3s ease all; /*Tiempo de transición del botón*/
-}
+/*}*/
 
 .botonDestino:hover rect {
   stroke-dashoffset: 0.8;
