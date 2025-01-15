@@ -173,9 +173,10 @@ export default {
 /* Grid de Proyectos */
 .proyectos-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  place-items: center; /**Para centrar vertical y horizontalmente */
+  grid-template-columns: repeat(3, 1fr);
   gap: 10px;
-  max-width: 800px; /* Limita el ancho máximo */
+  max-width: 100%; /* Limita el ancho máximo */
   margin: 0 auto; /* Centra horizontalmente dentro del contenedor */
 }
 /* Tarjeta de Proyecto */

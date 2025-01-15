@@ -3,11 +3,11 @@
     <h1 class="title">Jayson Vargas</h1>
     <nav class="navegacion">
       <ul>
-        <li><router-link to="/">Inicio</router-link></li>
-        <li><router-link to="/SobreMi">Sobre mí</router-link></li>
-        <li><router-link to="/Proyecto">Proyectos</router-link></li>
-        <li><router-link to="/Habilidades">Habilidades</router-link></li>
-        <li><router-link to="/Contacto">Contacto</router-link></li>
+        <li><a href="#Inicio" class="nav_link">Inicio</a></li>
+        <li><a href="#SobreMi" class="nav_link">Sobre mí</a></li>
+        <li><a href="#proyectos" class="nav_link">Proyectos</a></li>
+        <li><a href="#habilidades" class="nav_link">Habilidades</a></li>
+        <li><a href="#contacto" class="nav_link">Contacto</a></li>
         <li class="search-container">
           <input type="text" class="busqueda" placeholder="Buscar..." />
           <font-awesome-icon icon="magnifying-glass" class="busquedaIcono" />
@@ -41,6 +41,9 @@ export default {
 </script>
 
 <style scoped>
+html {
+  scroll-behavior: smooth;
+}
 .space-header {
   display: flex;
   z-index: 9;
@@ -121,6 +124,11 @@ export default {
 
 .navegacion a:hover {
   color: white;
+}
+
+.nav-link:active {
+  color: black;
+  text-decoration: none;
 }
 
 .navegacion .search-container {

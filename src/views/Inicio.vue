@@ -1,25 +1,30 @@
 <template>
   <div class="containerPrincipal">
-    <div class="titleSection custom-margin-title">
+    <div id="Inicio" class="titleSection custom-margin-title">
       <TitleSection />
     </div>
-    <div class="custom-margin-sobreMi"><SobreMi /></div>
     <div
-      id="medioSection"
+      id="SobreMi"
+      class="animate__animated animate__slideInU custom-margin-sobreMi"
+    >
+      <SobreMi />
+    </div>
+    <div
+      id="habilidades"
       class="animate__animated animate__slideInUp custom-margin-habilidades"
     >
       <Habilidades />
     </div>
-    <div class="custom-margin-experiencia">
+    <div id="experiencia" class="custom-margin-experiencia">
       <Experiencia />
     </div>
-    <div class="custom-margin-proyectos">
+    <div id="proyectos" class="custom-margin-proyectos">
       <Proyectos />
     </div>
-    <div class="custom-margin-contacto">
+    <div id="contacto" class="custom-margin-contacto">
       <Contacto />
     </div>
-    <div class="custom-margin-footer"><Footer /></div>
+    <div id="footer" class="custom-margin-footer"><Footer /></div>
   </div>
 </template>
 
@@ -69,6 +74,21 @@ export default {
   color: white;
 }
 
+#Inicio {
+  scroll-margin-top: 250px; /* Para que se vea bien y quede bien ubicado el scroll */
+  padding: 1px 0; /* Espaciado interno para cada sección */
+}
+
+#SobreMi,
+#habilidades,
+#experiencia,
+#proyectos,
+#contacto,
+#footer {
+  scroll-margin-top: 100px; /* Para que se vea bien y quede bien ubicado el scroll */
+  padding: 20px 0; /* Espaciado interno para cada sección */
+}
+
 /* Márgenes personalizables */
 .custom-margin-title {
   margin-top: 250px; /* Cambia este valor según necesites */
@@ -95,6 +115,6 @@ export default {
 }
 
 .custom-margin-sobreMi {
-  margin-top: 30px; /**Margen importante de separación con el TITLSECTION */
+  margin: 0; /**Margen importante de separación con el TITLSECTION */
 }
 </style>

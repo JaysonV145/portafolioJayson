@@ -8,11 +8,24 @@
       </p>
 
       <div class="formContacto">
-        <form>
-          <input type="text" placeholder="Nombre" />
-          <input type="text" placeholder="Email" />
-          <input type="text" placeholder="Mensaje" />
-          <button><p>Enviar</p></button>
+        <form @submit.prevent="enviarFormulario">
+          <div class="input-group">
+            <input v-model="Nombre" type="text" placeholder="Nombre" required />
+            <span class="icon"><font-awesome-icon icon="user" /></span>
+          </div>
+          <div class="input-group">
+            <input v-model="Email" type="email" placeholder="Email" required />
+            <span class="icon"><font-awesome-icon icon="envelope" /></span>
+          </div>
+          <div class="input-group">
+            <textarea
+              v-model="Mensaje"
+              placeholder="Mensaje"
+              required
+            ></textarea>
+            <span class="icon"><font-awesome-icon icon="comment" /></span>
+          </div>
+          <button type="submit" class="btn-enviar">Enviar</button>
         </form>
       </div>
       <div class="contenedor-info-contacto">
@@ -32,16 +45,28 @@
 <script>
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import {
+  faComment,
+  faEnvelope,
   faEnvelopeOpen,
   faMagnifyingGlass,
   faPhone,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
 
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 
-library.add(faMagnifyingGlass, faArrowLeft, faEnvelopeOpen, faPhone);
+library.add(
+  faMagnifyingGlass,
+  faArrowLeft,
+  faEnvelopeOpen,
+  faPhone,
+  faUser,
+  faEnvelope,
+  faComment
+);
 export default {
   name: "Habilidades",
   components: {
@@ -53,15 +78,47 @@ export default {
 
   data() {
     return {
-      showDetails: {
-        exp1: false,
-        exp2: false,
-      },
+      Nombre: "",
+      Email: "",
+      Mensaje: "",
     };
   },
   methods: {
-    toggleDetails(exp) {
-      this.showDetails[exp] = !this.showDetails[exp];
+    async submitForm() {
+      const apiKey =
+        "patrUhgNVRedcpNpZ.b6ff194640dd41f5654f830a1fffabe9a2b23332ba0080add924a6eb8e5fcba0";
+      const baseId = "appri9AFq9NWfIjRw";
+      const tableName = "contactosPortafolio";
+
+      const data = {
+        records: [
+          {
+            fields: {
+              Nombre: this.Nombre,
+              Email: this.Email,
+              Mensaje: this.Mensaje,
+            },
+          },
+        ],
+      };
+
+      try {
+        const response = await axios.post(
+          `https://api.airtable.com/v0/${baseId}/${tableName}`,
+          data,
+          {
+            headers: {
+              Authorization: `Bearer ${apiKey}`,
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        console.log("Success:", response.data);
+        alert("Formulario enviado con éxito");
+      } catch (error) {
+        console.error("Error:", error);
+        alert("Hubo un error al enviar el formulario");
+      }
     },
   },
 };
@@ -143,6 +200,40 @@ export default {
   flex-direction: column;
 }
 
+.input-group {
+  position: relative;
+}
+
+.input-group input,
+.input-group textarea {
+  width: 100%;
+  padding: 15px 40px 15px 15px;
+  border: 1px solid rgb(168, 168, 168);
+  border-radius: 5px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+  border-color: #007f9c;
+  box-shadow: 0 0 5px rgba(0, 127, 156, 0.5);
+}
+
+.input-group .icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgb(168, 168, 168);
+  transition: color 0.3s ease;
+}
+
+.input-group input:focus ~ .icon,
+.input-group textarea:focus ~ .icon {
+  color: #007f9c;
+}
+
 .formContacto form input {
   border: none;
   padding: 25px;
@@ -152,6 +243,21 @@ export default {
   outline: none;
 }
 
+.formContacto form textarea {
+  border: none;
+  padding: 25px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgb(168, 168, 168);
+  background-color: var(--color-blanco);
+  outline: none;
+}
+
+.formContacto form textarea:focus {
+  border: none;
+  border-bottom: 1px solid rgb(126, 126, 126); /* Cambia el color al hacer foco */
+  transition: border-bottom-color 0.3s ease-in-out; /* Transición suave */
+}
+
 .formContacto form input:focus {
   border: none;
   border-bottom: 1px solid rgb(126, 126, 126); /* Cambia el color al hacer foco */
@@ -159,18 +265,19 @@ export default {
 }
 
 .formContacto form button {
+  width: 100%;
+  padding: 15px;
+  background-color: #007f9c;
+  color: white;
   border: none;
-  background-color: var(--color-negro);
-  color: var(--color-blanco);
-  text-transform: uppercase;
-  padding: 10px;
+  border-radius: 5px;
   cursor: pointer;
-  margin-top: 20px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.formContacto form button:hover {
-  background-color: #1a1919;
-  transition: 0.5s;
+.btn-enviar:hover {
+  background-color: #005f7a;
+  transform: scale(1.05);
 }
 
 .formContacto form p {

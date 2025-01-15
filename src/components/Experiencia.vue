@@ -8,6 +8,7 @@
         class="experience-card"
         @mouseenter="hoverExperience(index)"
         @mouseleave="leaveExperience"
+        @click="toggleDetails(index)"
       >
         <div class="card-content">
           <div class="icon-container">
@@ -15,18 +16,14 @@
           </div>
           <h2 class="experience-title">{{ experience.title }}</h2>
           <p class="experience-company">{{ experience.company }}</p>
-          <p class="experience-duration">{{ experience.duration }}</p>
-          <p class="experience-description">{{ experience.description }}</p>
-          <p class="experience-skills">Tecnologías:</p>
-          <div class="spanSkills">
-            <span
-              v-for="(skill, i) in experience.skills"
-              :key="i"
-              class="skill"
-            >
-              <i :class="skill.icon"></i> {{ skill.name }}
-            </span>
-          </div>
+          <p class="experience-duration">
+            <i class="fas fa-calendar-alt"></i> {{ experience.duration }}
+          </p>
+          <ul class="experience-description">
+            <li v-for="(desc, index) in experience.description" :key="index">
+              {{ desc }}
+            </li>
+          </ul>
         </div>
       </div>
     </div>
@@ -95,7 +92,13 @@ export default {
           title: "Desarrollador Full-Stack",
           company: "Turit",
           duration: "Octubre 2024 - Diciembre 2024",
-          description: "Desarrollo de aplicaciones web modernas.",
+          description: [
+            "🚀 Gestión de procesos internos: Implementación de CRM (GoHighlevel) y automatización (Make, Zapier) para mejorar flujos y reportes.",
+            "💻 Desarrollo web responsivo: Creación de interfaces funcionales con HTML, CSS, JavaScript y Bootstrap.",
+            "🔧 Optimización de tareas: Mejora de la productividad mediante Google Apps Script.",
+            "🌐 Soluciones no-code: Implementación de WordPress, Bubble.io y Shopify para el desarrollo y lanzamiento de sitios web dinámicos.",
+            "📝 Documentación y mantenimiento: Gestión de proyectos y control de versiones mediante GitHub.",
+          ],
           icon: "fas fa-laptop-code",
           skills: [{ name: "Vue.js" }, { name: "JavaScript" }, { name: "CSS" }],
         },
@@ -103,7 +106,13 @@ export default {
           title: "Desarollador de Software",
           company: "Meltec Comunicaciones",
           duration: "Marzo 2024 - Octubre 2024",
-          description: "Diseño de interfaces intuitivas y atractivas.",
+          description: [
+            "🚀 Desarrollo web: Creación de aplicaciones con HTML, CSS, JavaScript, Vue.js y Bootstrap para interfaces intuitivas.",
+            "🌐 Intranet: Diseño y desarrollo de una intranet con Vue.js para mejorar la comunicación interna.",
+            "🛠️ Aplicación no-code: Implementación de soluciones no-code con AppSheet para optimizar procesos.",
+            "🤖 Bot conversacional: Desarrollo de un bot con Voiceflow integrado a APIs externas para mejorar el soporte técnico.",
+            "⚙️ Automatización: Uso de herramientas de IA como Make para automatizar tareas manuales y mejorar la eficiencia.",
+          ],
           icon: "fas fa-palette",
           skills: [{ name: "Figma" }, { name: "Vue.js" }, { name: "CSS" }],
         },
@@ -118,6 +127,9 @@ export default {
     leaveExperience() {
       this.hoveredIndex = null;
     },
+  },
+  toggleDetails(index) {
+    this.expandedIndex = this.expandedIndex === index ? null : index;
   },
 };
 </script>
@@ -146,7 +158,7 @@ export default {
   background: linear-gradient(135deg, #ffffff, #f0f0f0);
   border-radius: 15px;
   padding: 1.5rem;
-  width: 300px;
+  width: 400px;
   transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.3s ease;
   text-align: center;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -157,6 +169,7 @@ export default {
 .experience-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid #009688;
 }
 
 .experience-card::after {
@@ -198,11 +211,40 @@ export default {
   color: #333;
 }
 
-.experience-company,
-.experience-duration,
-.experience-description {
+.experience-company {
   margin: 0.5rem 0;
   color: #666;
+}
+.experience-description {
+  position: relative;
+  padding: 1rem;
+  background-color: #f0f4f7;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: #666;
+  margin-bottom: 1rem;
+  height: 550px;
+}
+
+.experience-description li {
+  list-style: none;
+  margin-bottom: 0.8rem; /* Espaciado entre los elementos de la lista */
+  padding-left: 1rem; /* Espaciado izquierdo para alinear con el texto */
+  position: relative;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.experience-description::before {
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  font-size: 2rem;
+}
+.experience-duration {
+  font-style: italic;
+  color: #999;
+  margin-top: 0.5rem;
 }
 
 .experience-skills {

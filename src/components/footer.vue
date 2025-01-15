@@ -7,7 +7,7 @@
       <div class="contact-info">
         <h3>Contacto</h3>
         <p>
-          Email: <a href="mailto:tuemail@example.com">vjaison30@gmail.com</a>
+          Email: <a href="mailto:vjaison30@gmail.com">vjaison30@gmail.com</a>
         </p>
         <p>Teléfono: <a href="tel:+573224283163">+57 3224283163</a></p>
       </div>
@@ -22,17 +22,33 @@
       </div>
       <div class="social-media">
         <h3>Servicios</h3>
-        <a href="https://linkedin.com/in/tu-perfil" target="_blank"
-          >Desarrollo Web</a
-        >
-        <a href="https://github.com/tu-usuario" target="_blank">Diseño UX</a>
-        <a href="https://github.com/tu-usuario" target="_blank">Diseño UI</a>
-        <a href="https://github.com/tu-usuario" target="_blank"
-          >Automatización</a
-        >
-        <a href="https://github.com/tu-usuario" target="_blank"
-          >Soluciones con IA</a
-        >
+        <ul>
+          <li>
+            <a href="https://linkedin.com/in/tu-perfil" target="_blank"
+              >Desarrollo Web</a
+            >
+          </li>
+          <li>
+            <a href="https://github.com/tu-usuario" target="_blank"
+              >Diseño UX</a
+            >
+          </li>
+          <li>
+            <a href="https://github.com/tu-usuario" target="_blank"
+              >Diseño UI</a
+            >
+          </li>
+          <li>
+            <a href="https://github.com/tu-usuario" target="_blank"
+              >Automatización</a
+            >
+          </li>
+          <li>
+            <a href="https://github.com/tu-usuario" target="_blank"
+              >Soluciones con IA</a
+            >
+          </li>
+        </ul>
       </div>
     </div>
     <p class="footer-credits">© 2024 Jayson. Todos los derechos reservados.</p>
@@ -99,31 +115,47 @@ export default {
 footer {
   background-color: var(--color-negro);
   color: var(--color-blanco);
-  padding: 20px;
+  padding: 10px 20px; /* Más espacio para mejorar la visualización */
   text-align: center;
   position: relative;
 }
+
 .footer-container {
   display: flex;
   justify-content: space-around;
+  align-items: center; /* Centrar verticalmente */
   flex-wrap: wrap;
+  gap: 20px; /* Espacio entre los elementos */
 }
+
 .footer-container div {
   margin: 10px;
+  flex: 1; /* Asegura que cada sección ocupa el mismo espacio */
+  min-width: 200px; /* Ancho mínimo para evitar colapsos */
 }
+
 .footer-container a {
   color: var(--color-blanco);
   text-decoration: none;
   transition: color 0.3s;
 }
+
 .footer-container a:hover {
-  color: var(--color-verde);
+  color: var(--color-blanco);
 }
+
+.footer-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 .footer-divider {
   border: none;
   border-top: 1px solid var(--color-blanco);
   margin: 20px 0;
 }
+
 .footer-credits {
   margin-top: 20px;
   font-size: 0.9em;
@@ -132,6 +164,7 @@ footer {
 .footer-icons {
   display: flex;
   justify-content: center;
+  gap: 15px; /* Espacio entre iconos */
 }
 
 .footer-icons span {
@@ -140,11 +173,9 @@ footer {
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  width: 20px; /* Tamaño uniforme del círculo */
-  height: 20px; /* Tamaño uniforme del círculo */
+  width: 50px; /* Tamaño uniforme del círculo */
+  height: 50px; /* Tamaño uniforme del círculo */
   font-size: 18px;
-  padding: 15px;
-  margin-right: 15px;
 }
 
 .footer-icons span:hover {
@@ -156,6 +187,8 @@ footer {
 .social-media {
   display: flex;
   flex-direction: column;
+  align-items: center; /* Centrar verticalmente */
+  font-weight: 390;
 }
 
 .logoFooter {

@@ -38,7 +38,7 @@
   </div>
 
   <div class="scrollVerMas animate__animated animate__bounce">
-    <a @click="scrollToMedioSection" class="iconoScrollLink">
+    <a @click="scrollToSobreMi" class="iconoScrollLink">
       <font-awesome-icon
         icon="angles-down"
         class="iconoScroll"
@@ -104,10 +104,10 @@ export default {
     FontAwesomeIcon,
   },
   methods: {
-    scrollToMedioSection() {
-      const medioSection = document.querySelector("#medioSection");
-      if (medioSection) {
-        medioSection.scrollIntoView({ behavior: "smooth" });
+    scrollToSobreMi() {
+      const SobreMi = document.querySelector("#SobreMi");
+      if (SobreMi) {
+        SobreMi.scrollIntoView({ behavior: "smooth" });
       }
     },
   },
@@ -125,13 +125,13 @@ export default {
 .titulo-inicio {
   position: relative;
   text-align: center;
-  width: 650px;
+  width: 750px;
   bottom: 100px;
   color: #f5efeb; /**c8d9e6**/
 }
 
 .titulo-inicio h2 {
-  font-size: 55px;
+  font-size: 65px;
   margin-top: 10px;
   font-weight: 600;
 }
@@ -139,18 +139,19 @@ export default {
 .texto-gradiente {
   font-size: 24px;
   font-weight: bold;
-  background: linear-gradient(
+  /* background: linear-gradient(
     to right,
     #ffffff,
     rgba(218, 194, 194, 0)
-  ); /**crea un gradiente que va de blanco sólido a transparente de izquierda a derecha */
-  background-clip: text; /**Hace que el fondo (el gradiente) solo sea visible dentro del área del texto. */
-  -webkit-text-fill-color: transparent; /* Hace que el texto sea transparente */
+  ); */
+  color: var(--color-blanco);
+  /*background-clip: text; /**Hace que el fondo (el gradiente) solo sea visible dentro del área del texto. */
+  /*-webkit-text-fill-color: transparent; /* Hace que el texto sea transparente */
 }
 
 .desc_titulo {
   position: relative;
-  bottom: 20px;
+  bottom: 40px;
 }
 
 .imagen_perfil {
