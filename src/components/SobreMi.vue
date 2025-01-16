@@ -406,6 +406,7 @@ export default {
 
 .lado-derecho .tituloDerecho {
   font-size: 60px;
+  margin-left: 10px;
   color: var(--color-negro);
 }
 
