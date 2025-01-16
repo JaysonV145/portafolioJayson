@@ -123,6 +123,21 @@ export default {
   flex-direction: column;
 }
 
+@media (max-width: 768px) {
+  .contenedor_padre {
+    flex-direction: column; /* Mantiene la dirección en columna */
+    padding: 10px; /* Reduce el espacio para pantallas pequeñas */
+  }
+}
+
+/* Ajustes para pantallas aún más pequeñas, como teléfonos */
+@media (max-width: 480px) {
+  .contenedor_padre {
+    height: auto;
+    padding: 5px; /* Minimiza aún más el espacio */
+  }
+}
+
 .titulo-inicio {
   position: relative;
   text-align: center;
@@ -166,6 +181,65 @@ export default {
 .titulo-inicio .nombreTexto {
   font-size: 50px;
   font-weight: 400;
+}
+
+/* Media Queries para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .titulo-inicio {
+    position: relative;
+    width: 365px;
+    bottom: 120px;
+  }
+
+  .titulo-inicio h2 {
+    font-size: 50px; /* Reduce el tamaño de la fuente en pantallas medianas */
+  }
+
+  .texto-gradiente {
+    font-size: 20px; /* Reduce el tamaño del texto en pantallas medianas */
+  }
+
+  .imagen_perfil {
+    width: 90px; /* Ajusta el tamaño de la imagen para pantallas más pequeñas */
+    height: 90px;
+  }
+
+  .titulo-inicio .nombreTexto {
+    font-size: 40px; /* Ajusta el tamaño del texto del nombre */
+  }
+}
+
+@media (max-width: 480px) {
+  .titulo-inicio {
+    position: relative;
+    width: 360px;
+    bottom: 110px;
+  }
+
+  .titulo-inicio h2 {
+    position: relative;
+    bottom: 10px;
+    margin-bottom: 50px;
+    font-size: 36px; /* Reduce aún más el tamaño del título en pantallas muy pequeñas */
+  }
+
+  .texto-gradiente {
+    font-size: 18px; /* Ajusta el tamaño del texto */
+  }
+
+  .imagen_perfil {
+    width: 80px; /* Ajusta el tamaño de la imagen */
+    height: 80px;
+  }
+
+  .desc_titulo {
+    position: relative;
+    bottom: 55px;
+  }
+
+  .titulo-inicio .nombreTexto {
+    font-size: 30px; /* Ajusta el tamaño del nombre en pantallas pequeñas */
+  }
 }
 
 .botonesInicio {
@@ -268,15 +342,216 @@ export default {
   fill: none;
 }
 
-/*.botonDestino rect {
-  width: 100%;
-  height: 50px;
-  stroke: var(--color-blanco);
-  stroke-width: 2px;
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
-  transition: 1.3s ease all; /*Tiempo de transición del botón*/
-/*}*/
+/* Media Queries para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .botonesInicio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 500px;
+    height: 50px;
+    position: relative;
+    bottom: 120px; /**Posición de botones  */
+  }
+
+  .botonTicket {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #004e7c, #00b8b8); /**PRUEBAS */
+    border: none;
+    color: var(--color-blanco);
+    cursor: pointer;
+    margin: 5px 5px 5px 5px;
+    overflow: hidden;
+  }
+
+  .botonTicket span {
+    transition: 0.4s ease-in-out all;
+    font-size: 15px;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    right: 0%;
+  }
+
+  .botonTicket:hover span {
+    right: 50px;
+  }
+
+  .botonTicket .icono {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 2;
+    right: 10px;
+    transform: scale(
+      0.45
+    ); /* Centra verticalmente el icon y tambien el tamaño */
+    transition: 0.4s ease-in-out all; /*Transición de vuelta*/
+    opacity: 0; /** Lo vuelve invisible*/
+  }
+
+  .botonTicket:hover .icono {
+    transition: 0.4s ease-in-out all; /**Transición al pasar el mouse */
+    right: 60px;
+    opacity: 1;
+  }
+
+  .botonTicket svg {
+    color: var(--color-blanco);
+    width: 35px;
+    height: 35px;
+  }
+
+  .botonTicket:hover {
+    background-color: var(--color-gris-fondo);
+    transition: 0.5s;
+  }
+
+  .botonDestino {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--color-blanco);
+    padding: 15px;
+    background-color: var(--color-gris-fondo);
+    color: var(--color-blanco);
+    cursor: pointer;
+    margin: 5px 5px 5px 5px;
+    transition: 0.3 ease all;
+  }
+
+  .botonDestino span {
+    position: relative;
+    z-index: 2;
+    transition: 0.3s ease all;
+  }
+
+  .botonDestino svg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    fill: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .botonesInicio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 350px;
+    height: 50px;
+    position: relative;
+    bottom: 145px; /**Posición de botones  */
+  }
+
+  .botonTicket {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    background: linear-gradient(135deg, #004e7c, #00b8b8); /**PRUEBAS */
+    border: none;
+    color: var(--color-blanco);
+    cursor: pointer;
+    margin: 5px 5px 5px 5px;
+    overflow: hidden;
+  }
+
+  .botonTicket span {
+    transition: 0.4s ease-in-out all;
+    font-size: 15px;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    right: 0%;
+    font-size: 12px;
+  }
+
+  .botonTicket:hover span {
+    right: 50px;
+  }
+
+  .botonTicket .icono {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 2;
+    right: 10px;
+    transform: scale(
+      0.45
+    ); /* Centra verticalmente el icon y tambien el tamaño */
+    transition: 0.4s ease-in-out all; /*Transición de vuelta*/
+    opacity: 0; /** Lo vuelve invisible*/
+  }
+
+  .botonTicket:hover .icono {
+    transition: 0.4s ease-in-out all; /**Transición al pasar el mouse */
+    right: 60px;
+    opacity: 1;
+  }
+
+  .botonTicket svg {
+    color: var(--color-blanco);
+    width: 35px;
+    height: 35px;
+  }
+
+  .botonTicket:hover {
+    background-color: var(--color-gris-fondo);
+    transition: 0.5s;
+  }
+
+  .botonDestino {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--color-blanco);
+    padding: 10px;
+    background-color: var(--color-gris-fondo);
+    color: var(--color-blanco);
+    cursor: pointer;
+    margin: 5px 5px 5px 5px;
+    transition: 0.3 ease all;
+    font-size: 12px;
+  }
+
+  .botonDestino span {
+    position: relative;
+    z-index: 2;
+    transition: 0.3s ease all;
+  }
+
+  .botonDestino svg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    fill: none;
+  }
+}
 
 .botonDestino:hover rect {
   stroke-dashoffset: 0.8;
@@ -342,6 +617,36 @@ export default {
   height: 30px;
   margin-right: 15px;
   animation: animacionBotonScroll 2s infinite; /**Duración animacion */
+}
+
+@media (max-width: 480px) {
+  .scrollVerMas {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    bottom: 140px;
+    margin-left: -30px;
+    width: 360px;
+  }
+
+  .scrollVerMas a {
+    color: var(--color-blanco);
+  }
+
+  .scrollVerMas a:hover {
+    background-color: transparent;
+  }
+
+  .scrollVerMas .iconoScroll {
+    position: relative;
+    bottom: -10px; /**Necesario, posición mejor alineada del botón con scrollea para ver más */
+    height: 30px;
+    margin-right: 15px;
+
+    animation: animacionBotonScroll 2s infinite; /**Duración animacion */
+  }
 }
 
 @keyframes animacionBotonScroll {
@@ -470,5 +775,28 @@ export default {
 
 .redesSociales a {
   background-color: transparent;
+}
+
+@media (max-width: 480px) {
+  .redesSociales {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    bottom: 115px;
+    width: 400px;
+  }
+
+  .redesSociales i {
+    color: var(--color-blanco);
+    opacity: 0.7;
+
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  .redesSociales a {
+    background-color: transparent;
+  }
 }
 </style>

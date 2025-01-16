@@ -94,6 +94,12 @@ export default {
   margin-top: 250px; /* Cambia este valor según necesites */
 }
 
+@media (max-width: 480px) {
+  .custom-margin-title {
+    margin-bottom: -100px; /* Minimiza aún más el espacio */
+  }
+}
+
 .custom-margin-habilidades {
   margin-top: 20px; /* Cambia este valor según necesites */
 }
