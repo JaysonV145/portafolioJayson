@@ -163,6 +163,60 @@ export default {
   border-radius: 10px;
 }
 
+@media (max-width: 480px) {
+  .contenedor-contacto {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Centra horizontalmente */
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .lado-izquierdo {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sobreMi {
+    position: relative;
+    font-size: 1.2rem;
+    color: var(--color-negro);
+    width: 100%;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .titulo {
+    font-size: 60px;
+    color: var(--color-negro);
+    margin-bottom: 0.2rem;
+    font-weight: 500;
+  }
+
+  .descripcion {
+    display: flex;
+    justify-content: center;
+    text-align: justify;
+    width: 100%;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #555;
+  }
+
+  .divider {
+    width: 250px;
+    border: none;
+    border-top: 3px solid var(--color-negro);
+    margin: 10px 0;
+    border-radius: 10px;
+  }
+}
+
 .botonesCV {
   display: flex;
 }
@@ -181,6 +235,38 @@ export default {
   cursor: pointer;
   margin-left: 15px;
   overflow: hidden;
+}
+
+@media (max-width: 480px) {
+  .botonesCV {
+    display: flex;
+    width: 327px; /**Para centrar */
+  }
+
+  .botonCV {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    color: var(--color-negro);
+    width: 170px;
+    padding: 15px;
+    border: 1px solid var(--color-negro);
+    border-radius: 15px;
+    cursor: pointer;
+    margin-left: 15px;
+    overflow: hidden;
+  }
+  .btn-4 {
+    scale: 1;
+    width: 170px;
+    background: var(--color-gris-fondo);
+    text-align: center;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
 }
 
 .botonCV span {
@@ -222,7 +308,7 @@ export default {
   background-color: transparent;
   color: var(--color-negro);
   border: 1px solid var(--color-negro);
-  width: 180px;
+  width: 150px;
   padding: 5px;
 
   border-radius: 15px;
@@ -421,5 +507,119 @@ export default {
 .tarjeta p {
   font-size: 1rem;
   color: var(--color-blanco);
+}
+
+@media (max-width: 480px) {
+  .lado-derecho {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .lado-derecho .tituloDerecho {
+    font-size: 60px;
+    color: var(--color-negro);
+  }
+
+  .tarjetas {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.5rem;
+    width: 380px;
+  }
+  .tarjeta {
+    padding: 2rem 1.5rem;
+    width: 300px;
+    background-color: var(--color-gris-fondo);
+    color: hsl(0, 0%, 90%);
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+    height: 250px;
+  }
+
+  .tarjeta::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(135deg, #004e7c, #007f9c);
+    clip-path: circle(18.4% at 100% 0);
+    transition: clip-path 0.5s ease;
+  }
+
+  .tarjeta:hover::before {
+    transform: scale(1);
+    z-index: -1; /**Para que no tape la letra y el contenido al pasar el mouse */
+  }
+
+  .tarjeta:hover {
+    transform: translateY(0);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .tarjeta-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+  }
+
+  .card-cta {
+    width: fit-content;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: hsl(0, 0%, 90%);
+
+    svg {
+      padding-left: 0.25rem;
+    }
+
+    svg path {
+      fill: hsl(0, 0%, 90%);
+    }
+  }
+
+  :hover {
+    &::before {
+      clip-path: circle(150% at 100% 0%);
+    }
+  }
+
+  :nth-child(2) {
+    &::before {
+      background-color: #03624c;
+    }
+  }
+  :nth-child(3) {
+    &::before {
+      background-color: hsl(216, 100%, 40%);
+    }
+  }
+
+  .icono {
+    font-size: 2.5rem;
+    color: var(--color-blanco);
+    margin-bottom: 1rem;
+  }
+
+  .tarjeta h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-blanco);
+    font-weight: bold;
+  }
+
+  .tarjeta h2:hover {
+    color: var(--color-blanco);
+  }
+
+  .tarjeta p {
+    font-size: 1rem;
+    color: var(--color-blanco);
+  }
 }
 </style>
