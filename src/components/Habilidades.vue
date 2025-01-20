@@ -175,7 +175,7 @@ export default {
   },
   computed: {
     totalSlides() {
-      return Math.ceil(this.slides.length / 2); // Agrupa en conjuntos de 2
+      return Math.ceil(this.slides.length / 4); // Agrupa en conjuntos de 4
     },
   },
   methods: {
@@ -279,6 +279,9 @@ export default {
     display: flex;
     flex-direction: column; /* Asegura que los slides se apilen verticalmente */
     width: 350px; /* Ancho completo */
+    overflow-x: auto; /* Permitir el scroll horizontal */
+    scroll-snap-type: x mandatory; /* Forzar que el scroll sea en pasos */
+    -webkit-overflow-scrolling: touch; /* Mejora el desplazamiento en iOS */
     height: auto; /* Altura automática para ajustarse al contenido */
     overflow: hidden;
   }
@@ -300,17 +303,9 @@ export default {
 
   .carousel-track {
     display: flex;
-    flex-direction: column;
-    width: 1180px;
-    height: 950px;
+    flex-direction: row;
+    width: 1320px;
     transition: transform 0.5s ease-in-out;
-  }
-
-  .carousel-slide {
-    display: flex;
-    flex: 0 0 50%; /* Cada tarjeta ocupa el 50% del ancho del carrusel */
-    padding: 10px;
-    box-sizing: border-box;
   }
 
   .carousel-slide {
