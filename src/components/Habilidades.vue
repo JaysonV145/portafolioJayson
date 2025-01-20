@@ -175,7 +175,7 @@ export default {
   },
   computed: {
     totalSlides() {
-      return Math.ceil(this.slides.length / 4); // Agrupa en conjuntos de 4
+      return Math.ceil(this.slides.length / 2); // Agrupa en conjuntos de 2
     },
   },
   methods: {
@@ -259,6 +259,92 @@ export default {
 
 .dot.active {
   background-color: #ccc;
+}
+
+@media (max-width: 480px) {
+  .tituloSeccion {
+    display: flex;
+    position: relative;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    text-align: start;
+    font-size: 60px;
+    margin-left: 18px;
+    color: var(--color-blanco);
+    margin-bottom: 20px;
+  }
+
+  .carousel {
+    position: relative;
+    display: flex;
+    flex-direction: column; /* Asegura que los slides se apilen verticalmente */
+    width: 350px; /* Ancho completo */
+    height: auto; /* Altura automática para ajustarse al contenido */
+    overflow: hidden;
+  }
+  .carousel-indicators {
+    display: flex;
+    justify-content: center; /* Centra los puntos horizontalmente */
+    position: absolute; /* Posición absoluta para poder moverlos */
+    bottom: -50px;
+  }
+
+  .indicator {
+    height: 10px; /* Altura del punto */
+    width: 10px; /* Ancho del punto */
+    margin: 0 5px; /* Espacio entre puntos */
+    background-color: gray; /* Color por defecto */
+    border-radius: 50%; /* Forma circular */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el punto */
+  }
+
+  .carousel-track {
+    display: flex;
+    flex-direction: column;
+    width: 1180px;
+    height: 950px;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .carousel-slide {
+    display: flex;
+    flex: 0 0 50%; /* Cada tarjeta ocupa el 50% del ancho del carrusel */
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .carousel-slide {
+    display: flex;
+    width: 100%;
+    width: 25%; /* Mostrar 4 tarjetas a la vez */
+
+    padding: 10px;
+  }
+
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .dot {
+    /**Estos son los puntos del carrusel */
+    height: 10px;
+    width: 10px;
+    margin: 0 5px;
+    background-color: #333;
+    border-radius: 50%;
+    display: inline-block;
+    justify-content: center; /**Para centrar los dots */
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .dot.active {
+    background-color: #ccc;
+  }
 }
 
 .botonTipoHab {
@@ -355,6 +441,71 @@ export default {
   border-top: 3px solid var(--color-blanco);
   margin: 10px 0;
   border-radius: 10px;
+}
+
+@media (max-width: 480px) {
+  .habilidades {
+    display: flex;
+    margin: auto;
+    justify-content: center; /**Esto centra todo, los dots y demas. No cambiar */
+    width: 10px;
+    flex-wrap: wrap;
+    height: auto;
+  }
+
+  .contenedorHabilidades {
+    display: grid;
+    grid-template-columns: 1fr; /* Cambia a una columna */
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    gap: 10px;
+    box-sizing: border-box;
+  }
+
+  .card {
+    background-color: #181c23;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    text-align: start;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    width: 340px; /**340px inicial */
+    height: 300px; /**300px */
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative; /* Necesario para posicionar el botón correctamente */
+  }
+
+  .card h1 {
+    margin-top: 15px;
+    font-size: 22px;
+    margin-bottom: -10px;
+  }
+
+  .card img {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+  }
+
+  .card p.description {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+
+  .divider {
+    width: 60px;
+    border: none;
+    border-top: 3px solid var(--color-blanco);
+    margin: 10px 0;
+    border-radius: 10px;
+  }
 }
 
 .botonTicket {
