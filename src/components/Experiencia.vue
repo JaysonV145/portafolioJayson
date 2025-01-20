@@ -1,6 +1,6 @@
 <template>
   <section class="experience-section">
-    <h1 class="section-title">Mi Experiencia</h1>
+    <h1 class="section-title">Experiencia Profesional</h1>
     <div class="experience-container">
       <div
         v-for="(experience, index) in experiences"
@@ -103,7 +103,7 @@ export default {
           skills: [{ name: "Vue.js" }, { name: "JavaScript" }, { name: "CSS" }],
         },
         {
-          title: "Desarollador de Software",
+          title: "Desarrollador de Software",
           company: "Meltec Comunicaciones",
           duration: "Marzo 2024 - Octubre 2024",
           description: [
@@ -141,9 +141,10 @@ export default {
 }
 
 .section-title {
-  text-align: center;
+  text-align: start;
   font-size: 4rem;
   margin-bottom: 1.5rem;
+  margin-left: -20px;
   color: #333;
 }
 
@@ -159,6 +160,7 @@ export default {
   border-radius: 15px;
   padding: 1.5rem;
   width: 400px;
+
   transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.3s ease;
   text-align: center;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -285,5 +287,159 @@ export default {
 
 .experience-card:hover .icon-container {
   transform: rotate(0deg) scale(1.2);
+}
+
+@media (max-width: 480px) {
+  .experience-section {
+    padding: 2rem;
+    background: #f9f9f9;
+  }
+
+  .section-title {
+    text-align: start;
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    margin-left: -20px;
+    color: #333;
+  }
+
+  .experience-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .experience-card {
+    background: linear-gradient(135deg, #ffffff, #f0f0f0);
+    border-radius: 15px;
+    padding: 1.5rem;
+    width: 400px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.3s ease;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .experience-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid #009688;
+  }
+
+  .experience-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .experience-card:hover::after {
+    opacity: 1;
+  }
+
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: opacity 0.3s ease;
+  }
+
+  .icon-container {
+    font-size: 3rem;
+    background: linear-gradient(135deg, #004e7c, #007f9c);
+    background-clip: initial;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-right: 5px;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+    transform: rotate(15deg) scale(1.2);
+  }
+
+  .experience-title {
+    font-size: 1.5rem;
+    color: #333;
+  }
+
+  .experience-company {
+    color: #666;
+  }
+  .experience-description {
+    position: relative;
+    padding: 1rem;
+    background-color: #f0f4f7;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #666;
+    margin-bottom: 1rem;
+    height: 680px;
+  }
+
+  .experience-description li {
+    list-style: none;
+    margin-bottom: 0.8rem; /* Espaciado entre los elementos de la lista */
+    padding-left: 1rem; /* Espaciado izquierdo para alinear con el texto */
+    position: relative;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  .experience-description::before {
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    font-size: 2rem;
+  }
+  .experience-duration {
+    font-style: italic;
+    color: #999;
+    margin-top: 0.5rem;
+  }
+
+  .experience-skills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: var(--color-gris-fondo);
+    font-weight: bold;
+  }
+
+  .spanSkills span {
+    font-size: 15px;
+    color: #666;
+  }
+
+  .skill i {
+    font-size: 15px;
+    color: #009688;
+    transition: transform 0.3s ease;
+  }
+
+  .skill {
+    margin: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .skill i {
+    margin-right: 5px;
+  }
+
+  .skill:hover i {
+    color: #009688;
+  }
+
+  .skill:hover {
+    text-decoration: underline;
+  }
+
+  .experience-card:hover .icon-container {
+    transform: rotate(0deg) scale(1.2);
+  }
 }
 </style>

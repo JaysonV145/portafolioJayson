@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <div class="contenedorPrincipal">
+    <div>
       <h1 class="tituloSeccion">Servicios y habilidades</h1>
       <div class="botonTipoHab">
         <button
@@ -191,6 +191,23 @@ export default {
   mounted() {
     this.autoSlide();
   },
+  methods: {
+    goToSlide(index) {
+      this.currentSlide = index;
+    },
+    nextSlide() {
+      this.currentSlide = (this.currentSlide + 1) % this.slides.length; // Avanzar al siguiente slide
+    },
+    prevSlide() {
+      this.currentSlide =
+        (this.currentSlide - 1 + this.slides.length) % this.slides.length; // Retroceder al slide anterior
+    },
+    autoSlide() {
+      setInterval(() => {
+        this.currentSlide = (this.currentSlide + 1) % this.slides.length; // Cambiar de slide automáticamente
+      }, 10000); // Cambia de slide cada 10 segundos
+    },
+  },
 };
 </script>
 
@@ -279,9 +296,9 @@ export default {
     display: flex;
     flex-direction: column; /* Asegura que los slides se apilen verticalmente */
     width: 350px; /* Ancho completo */
-    overflow-x: auto; /* Permitir el scroll horizontal */
-    scroll-snap-type: x mandatory; /* Forzar que el scroll sea en pasos */
-    -webkit-overflow-scrolling: touch; /* Mejora el desplazamiento en iOS */
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
     height: auto; /* Altura automática para ajustarse al contenido */
     overflow: hidden;
   }
@@ -374,6 +391,42 @@ export default {
 .botonTipoHab button .iconoHab {
   margin-right: 5px;
   transition: transform 0.3s ease;
+}
+
+@media (max-width: 480px) {
+  .botonTipoHab {
+    display: flex;
+    flex-direction: row;
+    margin-left: 15px;
+  }
+
+  .botonTipoHab button {
+    background-color: transparent;
+    color: white;
+    border: none;
+    border-radius: 32px;
+    width: 160px;
+    height: 40px;
+    padding: 1px;
+    cursor: pointer;
+    margin-right: 15px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+
+  .botonTipoHab button:hover {
+    color: #181c23; /* Cambia el color del texto al hacer hover */
+    background-color: var(--color-blanco);
+    transform: scale(1.1); /* Agranda el botón suavemente */
+    transition: 0.5s;
+  }
+
+  .botonTipoHab button .iconoHab {
+    margin-right: 5px;
+    transition: transform 0.3s ease;
+  }
 }
 
 .habilidades {
