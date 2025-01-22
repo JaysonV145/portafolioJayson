@@ -3,8 +3,8 @@
     <h1 class="title">Jayson Vargas</h1>
     <nav class="navegacion">
       <!-- Botón hamburguesa para pantallas pequeñas -->
-      <button @click="toggleMenu" class="menu-hamburguesa" aria-label="Menú">
-        <span class="hamburger-icon"></span>
+      <button class="menu-hamburguesa" @click="toggleMenu">
+        <font-awesome-icon icon="fa-solid fa-bars" class="hamburger-icon" />
       </button>
 
       <ul :class="{ 'menu-visible': isMenuVisible }">
@@ -26,8 +26,9 @@
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faMagnifyingGlass);
+library.add(faMagnifyingGlass, faBars);
 
 export default {
   name: "Header",
@@ -154,11 +155,15 @@ html {
 
 .hamburger-icon {
   width: 30px;
-  height: 3px;
-  background-color: white;
+  font-size: 24px; /* Tamaño del ícono */
+  color: var(--color-blanco);
   display: block;
   margin: 6px auto;
   transition: all 0.3s ease;
+}
+
+.menu-hamburguesa:hover .hamburger-icon {
+  transform: scale(1.1); /* Efecto al pasar el ratón */
 }
 
 @media (max-width: 480px) {
@@ -179,6 +184,25 @@ html {
 
   .menu-hamburguesa {
     display: block; /* Muestra el botón hamburguesa */
+  }
+  .navegacion ul li:nth-child(1) {
+    transition-delay: 0.1s;
+  }
+
+  .navegacion ul li:nth-child(2) {
+    transition-delay: 0.2s;
+  }
+
+  .navegacion ul li:nth-child(3) {
+    transition-delay: 0.3s;
+  }
+
+  .navegacion ul li:nth-child(4) {
+    transition-delay: 0.4s;
+  }
+
+  .navegacion ul li:nth-child(5) {
+    transition-delay: 0.5s;
   }
 }
 </style>
