@@ -175,6 +175,7 @@ html {
     display: none;
     flex-direction: column;
     background-color: var(--color-negro);
+    color: var(--color-blanco);
     width: 100%;
     padding: 20px;
     position: absolute;
@@ -223,6 +224,25 @@ html {
   }
 
   .navegacion ul li:nth-child(5) {
+    transition-delay: 0.5s;
+  }
+  .menu-visible li:nth-child(1) {
+    transition-delay: 0.1s;
+  }
+
+  .menu-visible li:nth-child(2) {
+    transition-delay: 0.2s;
+  }
+
+  .menu-visible li:nth-child(3) {
+    transition-delay: 0.3s;
+  }
+
+  .menu-visible li:nth-child(4) {
+    transition-delay: 0.4s;
+  }
+
+  .menu-visible li:nth-child(5) {
     transition-delay: 0.5s;
   }
 }
