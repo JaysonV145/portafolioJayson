@@ -167,90 +167,23 @@ html {
 }
 
 @media (max-width: 480px) {
-  .space-header {
-    position: absolute;
-  }
-
   .navegacion ul {
     display: none;
     flex-direction: column;
     background-color: var(--color-negro);
-    color: var(--color-blanco);
     width: 100%;
     padding: 20px;
     position: absolute;
     top: 100px;
     left: 0;
-    transform: translateY(-50px); /* Inicia fuera de la vista */
-    opacity: 0; /* Inicia invisible */
-    transition: transform 0.3s ease, opacity 0.3s ease; /* Suaviza la animación */
-  }
-
-  .navegacion ul a {
-    color: white; /* Cambia el color de las letras a blanco */
-    text-decoration: none; /* Asegúrate de que no haya subrayado */
-    font-size: 18px; /* Ajusta el tamaño si lo prefieres */
-    transition: color 0.3s ease; /* Transición suave si cambia el color al pasar el ratón */
   }
 
   .navegacion .menu-visible {
     display: flex; /* Muestra el menú si está visible */
-    transform: translateY(0); /* Regresa a su posición original */
-    opacity: 1; /* Se hace visible */
-  }
-
-  /* Añade un efecto de retraso a los elementos del menú */
-  .navegacion ul li {
-    opacity: 0; /* Elementos inicialmente invisibles */
-    transform: translateY(-10px); /* Leve desplazamiento hacia arriba */
-    transition: transform 0.3s ease, opacity 0.3s ease;
   }
 
   .menu-hamburguesa {
     display: block; /* Muestra el botón hamburguesa */
-  }
-
-  .menu-visible li {
-    opacity: 1; /* Se hacen visibles */
-    transform: translateY(0); /* Regresan a su posición */
-  }
-  .navegacion ul li:nth-child(1) {
-    transition-delay: 0.1s;
-  }
-
-  .navegacion ul li:nth-child(2) {
-    transition-delay: 0.2s;
-  }
-
-  .navegacion ul li:nth-child(3) {
-    transition-delay: 0.3s;
-  }
-
-  .navegacion ul li:nth-child(4) {
-    transition-delay: 0.4s;
-  }
-
-  .navegacion ul li:nth-child(5) {
-    transition-delay: 0.5s;
-  }
-  .menu-visible li:nth-child(1) {
-    transition-delay: 0.1s;
-  }
-
-  .menu-visible li:nth-child(2) {
-    transition-delay: 0.2s;
-  }
-
-  .menu-visible li:nth-child(3) {
-    transition-delay: 0.3s;
-  }
-
-  .menu-visible li:nth-child(4) {
-    transition-delay: 0.4s;
-  }
-
-  .menu-visible li:nth-child(5) {
-    transition-delay: 0.5s;
   }
 }
 </style>
