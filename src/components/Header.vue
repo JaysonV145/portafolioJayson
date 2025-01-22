@@ -186,6 +186,13 @@ html {
     transition: transform 0.3s ease, opacity 0.3s ease; /* Suaviza la animación */
   }
 
+  .navegacion ul a {
+    color: white; /* Cambia el color de las letras a blanco */
+    text-decoration: none; /* Asegúrate de que no haya subrayado */
+    font-size: 18px; /* Ajusta el tamaño si lo prefieres */
+    transition: color 0.3s ease; /* Transición suave si cambia el color al pasar el ratón */
+  }
+
   .navegacion .menu-visible {
     display: flex; /* Muestra el menú si está visible */
     transform: translateY(0); /* Regresa a su posición original */
