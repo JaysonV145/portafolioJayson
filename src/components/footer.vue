@@ -14,10 +14,11 @@
       <div class="nav-links">
         <h3>Enlaces</h3>
         <ul>
-          <li><a href="#inicio">Inicio</a></li>
-          <li><a href="#proyectos">Proyectos</a></li>
-          <li><a href="#sobre-mi">Sobre mí</a></li>
-          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="#Inicio" class="nav_link">Inicio</a></li>
+          <li><a href="#SobreMi" class="nav_link">Sobre mí</a></li>
+          <li><a href="#proyectos" class="nav_link">Proyectos</a></li>
+          <li><a href="#habilidades" class="nav_link">Habilidades</a></li>
+          <li><a href="#contacto" class="nav_link">Contacto</a></li>
         </ul>
       </div>
       <div class="social-media">
@@ -54,9 +55,18 @@
     <p class="footer-credits">© 2024 Jayson. Todos los derechos reservados.</p>
     <hr class="footer-divider" />
     <div class="footer-icons">
-      <span> <font-awesome-icon icon="fa-brands fa-github" /></span>
-      <span><font-awesome-icon icon="fa-brands fa-linkedin-in" /></span>
-      <span><font-awesome-icon icon="fa-solid fa-phone" /></span>
+      <span>
+        <a href="https://github.com/JaysonV145" target="_blank"
+          ><font-awesome-icon icon="fa-brands fa-github" /></a
+      ></span>
+      <span
+        ><a href="https://www.linkedin.com/in/jayson-vargas/" target="_blank"
+          ><font-awesome-icon icon="fa-brands fa-linkedin-in" /></a
+      ></span>
+      <span
+        ><a href="tel:+573224283163" target="_blank"
+          ><font-awesome-icon icon="fa-solid fa-phone" /></a
+      ></span>
     </div>
   </footer>
 </template>
@@ -165,6 +175,11 @@ footer {
   display: flex;
   justify-content: center;
   gap: 15px; /* Espacio entre iconos */
+}
+
+.footer-icons a {
+  text-decoration: none; /* Elimina el subrayado */
+  color: inherit; /* Mantiene el color del texto o del icono original */
 }
 
 .footer-icons span {

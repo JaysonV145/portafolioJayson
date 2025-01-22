@@ -2,7 +2,12 @@
   <header class="space-header">
     <h1 class="title">Jayson Vargas</h1>
     <nav class="navegacion">
-      <ul>
+      <!-- Botón hamburguesa para pantallas pequeñas -->
+      <button @click="toggleMenu" class="menu-hamburguesa" aria-label="Menú">
+        <span class="hamburger-icon"></span>
+      </button>
+
+      <ul :class="{ 'menu-visible': isMenuVisible }">
         <li><a href="#Inicio" class="nav_link">Inicio</a></li>
         <li><a href="#SobreMi" class="nav_link">Sobre mí</a></li>
         <li><a href="#proyectos" class="nav_link">Proyectos</a></li>
@@ -23,6 +28,7 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 
 library.add(faMagnifyingGlass);
+
 export default {
   name: "Header",
   components: {
@@ -30,12 +36,13 @@ export default {
   },
   data() {
     return {
-      exoplanetCount: 0,
+      isMenuVisible: false, // Controla la visibilidad del menú
     };
   },
-  mounted() {
-    // Simulación de obtener datos de la API de la NASA
-    this.exoplanetCount = 4000; // Aquí iría la lógica real para obtener el conteo de exoplanetas
+  methods: {
+    toggleMenu() {
+      this.isMenuVisible = !this.isMenuVisible; // Alterna la visibilidad del menú
+    },
   },
 };
 </script>
@@ -62,22 +69,6 @@ html {
 
 .logo img {
   height: 50px;
-}
-
-.infoPlanetas {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.busquedaPlanetas {
-  padding: 5px;
-  border: none;
-  border-radius: 5px;
-}
-
-.counter {
-  font-size: 14px;
 }
 
 .title {
@@ -111,7 +102,6 @@ html {
 
 .navegacion a {
   font-family: Arial, serif;
-
   text-decoration: none;
   color: gray;
   transition: color 0.3s;
@@ -126,13 +116,7 @@ html {
   color: white;
 }
 
-.nav-link:active {
-  color: black;
-  text-decoration: none;
-}
-
 .navegacion .search-container {
-  /**Clase para mover el input y el icono de búsqueda */
   position: relative;
   left: 350px;
 }
@@ -140,7 +124,6 @@ html {
 .navegacion .busqueda {
   position: relative;
   padding-left: 30px;
-  /*bottom: 50%; Para subir el elemento de busqueda */
   border: solid 2px gray;
   border-radius: 15px;
   padding: 9px;
@@ -150,12 +133,52 @@ html {
 
 .navegacion .busquedaIcono {
   position: absolute;
-  right: 20px; /* Espacio desde el borde izquierdo del input */
+  right: 20px;
   top: 50%;
   transform: translateY(-50%);
   color: white;
   margin-left: -30px;
   font-size: 17px;
   cursor: pointer;
+}
+
+.menu-hamburguesa {
+  display: none; /* Oculto por defecto */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  position: absolute; /* Permite ajustar la posición con left */
+  left: 290px; /* Mueve el botón hacia la izquierda */
+}
+
+.hamburger-icon {
+  width: 30px;
+  height: 3px;
+  background-color: white;
+  display: block;
+  margin: 6px auto;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 480px) {
+  .navegacion ul {
+    display: none;
+    flex-direction: column;
+    background-color: var(--color-negro);
+    width: 100%;
+    padding: 20px;
+    position: absolute;
+    top: 100px;
+    left: 0;
+  }
+
+  .navegacion .menu-visible {
+    display: flex; /* Muestra el menú si está visible */
+  }
+
+  .menu-hamburguesa {
+    display: block; /* Muestra el botón hamburguesa */
+  }
 }
 </style>

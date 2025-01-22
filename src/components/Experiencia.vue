@@ -141,7 +141,7 @@ export default {
 }
 
 .section-title {
-  text-align: start;
+  text-align: center;
   font-size: 4rem;
   margin-bottom: 1.5rem;
   margin-left: -20px;
@@ -225,7 +225,7 @@ export default {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   color: #666;
   margin-bottom: 1rem;
-  height: 550px;
+  height: 450px;
 }
 
 .experience-description li {
