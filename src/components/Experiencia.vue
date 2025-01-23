@@ -146,8 +146,21 @@ export default {
   margin-bottom: 1.5rem;
   margin-left: -20px;
   color: #333;
+  overflow: hidden; /* Oculta el texto mientras se "escribe" */
+  border-right: 3px solid var(--primary-color); /* Línea tipo cursor */
+  white-space: nowrap;
+  animation: pulse 1.5s infinite;
 }
 
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
 .experience-container {
   display: flex;
   flex-wrap: wrap;
@@ -166,6 +179,17 @@ export default {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   position: relative;
   overflow: hidden;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
 }
 
 .experience-card:hover {
@@ -271,6 +295,7 @@ export default {
 .skill {
   margin: 0.5rem;
   font-size: 0.9rem;
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
 }
 
 .skill i {

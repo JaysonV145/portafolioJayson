@@ -115,6 +115,16 @@ export default {
 </script>
 
 <style scoped>
+#particles-js {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Fondo debajo del formulario */
+  pointer-events: none; /* Desactiva la interacción del usuario */
+}
+
 .contenedor-contacto {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -126,6 +136,7 @@ export default {
   font-family: "Arial", sans-serif;
   background: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1;
 }
 
 .lado-izquierdo {

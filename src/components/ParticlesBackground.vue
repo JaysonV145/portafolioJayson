@@ -6,10 +6,23 @@
 export default {
   name: "ParticlesBackground",
   mounted() {
-    // Cargar el script de Particles.js de forma global
-    const script = document.createElement("script");
-    script.src = "https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js";
-    script.onload = () => {
+    // Verificar si el script ya está cargado para no agregarlo nuevamente
+    if (
+      !document.querySelector(
+        'script[src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"]'
+      )
+    ) {
+      const script = document.createElement("script");
+      script.src =
+        "https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js";
+      script.onload = this.initializeParticles;
+      document.body.appendChild(script);
+    } else {
+      this.initializeParticles(); // Si el script ya está cargado, inicializa partículas
+    }
+  },
+  methods: {
+    initializeParticles() {
       particlesJS("particles-js", {
         particles: {
           number: {
@@ -115,11 +128,22 @@ export default {
         },
         retina_detect: true,
       });
-    };
-    document.body.appendChild(script);
+    },
   },
 };
 </script>
+
+<style scoped>
+#particles-js {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+</style>
 
 <style>
 .particles-container {

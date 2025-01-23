@@ -334,13 +334,13 @@ export default {
 
 .formContacto form textarea:focus {
   border: none;
-  border-bottom: 2px solid rgb(126, 126, 126); /* Cambia el color al hacer foco */
+  border-bottom: 3px solid rgba(0, 127, 156, 0.5); /* Cambia el color al hacer foco */
   transition: border-bottom-color 0.3s ease-in-out; /* Transición suave */
 }
 
 .formContacto form input:focus {
   border: none;
-  border-bottom: 2px solid rgb(126, 126, 126); /* Cambia el color al hacer foco */
+  border-bottom: 3px solid rgba(0, 127, 156, 0.5); /* Cambia el color al hacer foco */
   transition: border-bottom-color 0.3s ease-in-out; /* Transición suave */
 }
 
