@@ -18,7 +18,7 @@
   --color-claro-fondo: #f5efeb;
   --color-azul-oscuro: #181c23;
   --color-verde: #03624c;
-  --color-blanco: #f5efeb; /*#FDFDFD*/
+  --color-blanco: #fff; /*#FDFDFD*/
   --color-negro: #0f0e0e;
   --color-verde-hover: #013928;
   --color-gris-letra: #f8e1e1;
@@ -60,6 +60,7 @@ h4,
 span,
 h5,
 button,
+textarea,
 a ::placeholder {
   font-family: "Raleway", serif;
   font-weight: 450;
