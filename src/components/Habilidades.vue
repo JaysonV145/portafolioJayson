@@ -2,19 +2,7 @@
   <transition name="fade">
     <div>
       <h1 class="tituloSeccion">Servicios y habilidades</h1>
-      <div class="botonTipoHab">
-        <button
-          :class="{ active: activeButton === 'tecnicas' }"
-          @click="activeButton = 'tecnicas'"
-        >
-          <font-awesome-icon icon="fa-solid fa-laptop-code" class="iconoHab" />
-          Habilidades técnicas
-        </button>
-        <button>
-          <font-awesome-icon icon="fa-solid fa-rocket" class="iconoHab" />
-          Habilidades blandas
-        </button>
-      </div>
+      <div class="botonTipoHab"></div>
 
       <div class="habilidades">
         <div class="contenedorHabilidades">
@@ -74,6 +62,8 @@ import githubLogo from "@/assets/github_logo.png";
 import appsheetLogo from "@/assets/appsheet_logo.png";
 import figmaLogo from "@/assets/figma_logo.png";
 import SketchLogo from "@/assets/sketch_logo.png";
+import bubbleLogo from "@/assets/bubble_logo.png";
+import makeLogo from "@/assets/make_logo.png";
 
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import {
@@ -122,16 +112,16 @@ export default {
             "Diseño de interfaces de usuario con Figma, creando wireframes, prototipos y mockups interactivos para aplicaciones web y móviles, mejorando la experiencia del usuario.",
         },
         {
-          img: SketchLogo,
-          title: "Sketch",
+          img: bubbleLogo,
+          title: "Bubble.io",
           description:
-            "Diseño de prototipos y mockups enfocados en usabilidad y estética para aplicaciones digitales.",
+            "Diseño y desarrollo de aplicaciones web no-code utilizando Bubble.io, creando soluciones interactivas y dinámicas.",
         },
         {
-          img: htmlLogo,
-          title: "HTML",
+          img: makeLogo,
+          title: "Make",
           description:
-            "Creación de estructuras web accesibles y semánticas, optimizadas para SEO y compatibilidad con múltiples navegadores.",
+            "Automatización de flujos de trabajo y procesos internos utilizando Make, conectando diversas aplicaciones para crear soluciones eficientes y personalizadas.",
         },
         {
           img: jsLogo,
@@ -140,16 +130,22 @@ export default {
             "Desarrollo de funcionalidades interactivas con JavaScript, manejando eventos y APIs para mejorar la experiencia del usuario.",
         },
         {
+          img: vueLogo,
+          title: "Vue.js",
+          description:
+            "Construcción de aplicaciones con Vue.js, gestionando el estado y creando interfaces dinámicas.",
+        },
+        {
           img: cssLogo,
           title: "CSS",
           description:
             "Creación de diseños responsivos y atractivos usando CSS3, con técnicas avanzadas como Flexbox y Grid.",
         },
         {
-          img: vueLogo,
-          title: "Vue.js",
+          img: htmlLogo,
+          title: "HTML",
           description:
-            "Construcción de aplicaciones con Vue.js, gestionando el estado y creando interfaces dinámicas.",
+            "Creación de estructuras web accesibles y semánticas, optimizadas para SEO y compatibilidad con múltiples navegadores.",
         },
         {
           img: bootstrapLogo,
@@ -218,6 +214,17 @@ export default {
 
   text-align: center;
   margin-bottom: 20px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
 }
 
 .carousel {
@@ -464,6 +471,17 @@ export default {
   box-sizing: border-box;
   overflow: hidden;
   position: relative; /* Necesario para posicionar el botón correctamente */
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
 }
 
 .card h1 {

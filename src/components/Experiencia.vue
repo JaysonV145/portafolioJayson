@@ -93,10 +93,10 @@ export default {
           company: "Turit",
           duration: "Octubre 2024 - Diciembre 2024",
           description: [
-            "🚀 Gestión de procesos internos: Implementación de CRM (GoHighlevel) y automatización (Make, Zapier) para mejorar flujos y reportes.",
+            "🚀 Gestión de procesos internos: Desarrollo y gestión de procesos internos con CRM (GoHighlevel) optimizando flujos y reportes",
             "💻 Desarrollo web responsivo: Creación de interfaces funcionales con HTML, CSS, JavaScript y Bootstrap.",
             "🔧 Optimización de tareas: Mejora de la productividad mediante Google Apps Script.",
-            "🌐 Soluciones no-code: Implementación de WordPress, Bubble.io y Shopify para el desarrollo y lanzamiento de sitios web dinámicos.",
+            "🌐 Soluciones no-code/low-code: Implementación de soluciones con Bubble.io, Airtable y automatizaciones con Make, Zapier y Pipedream, creando sitios web dinámicos y funcionales.",
             "📝 Documentación y mantenimiento: Gestión de proyectos y control de versiones mediante GitHub.",
           ],
           icon: "fas fa-laptop-code",
@@ -109,9 +109,9 @@ export default {
           description: [
             "🚀 Desarrollo web: Creación de aplicaciones con HTML, CSS, JavaScript, Vue.js y Bootstrap para interfaces intuitivas.",
             "🌐 Intranet: Diseño y desarrollo de una intranet con Vue.js para mejorar la comunicación interna.",
-            "🛠️ Aplicación no-code: Implementación de soluciones no-code con AppSheet para optimizar procesos.",
+            "🛠️ Aplicación no-code: Implementación de soluciones no-code con AppSheet para optimizar procesos y mantenimiento de páginas con Wordpress.",
             "🤖 Bot conversacional: Desarrollo de un bot con Voiceflow integrado a APIs externas para mejorar el soporte técnico.",
-            "⚙️ Automatización: Uso de herramientas de IA como Make para automatizar tareas manuales y mejorar la eficiencia.",
+            "⚙️ Automatización: Uso de herramientas como Make y Zapier, incrementando la eficiencia en diversas áreas.",
           ],
           icon: "fas fa-palette",
           skills: [{ name: "Figma" }, { name: "Vue.js" }, { name: "CSS" }],
@@ -149,7 +149,7 @@ export default {
   overflow: hidden; /* Oculta el texto mientras se "escribe" */
   border-right: 3px solid var(--primary-color); /* Línea tipo cursor */
   white-space: nowrap;
-  animation: pulse 1.5s infinite;
+  animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
@@ -158,7 +158,7 @@ export default {
     transform: scale(1);
   }
   50% {
-    transform: scale(1.05);
+    transform: scale(1.02);
   }
 }
 .experience-container {

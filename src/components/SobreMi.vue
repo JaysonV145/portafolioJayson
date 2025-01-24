@@ -5,12 +5,12 @@
       <h1 class="titulo">Perfil profesional</h1>
       <hr class="divider" />
       <p class="descripcion">
-        Soy un desarrollador de software apasionado por diseñar y construir
-        experiencias digitales impactantes y funcionales. Me especializo en
-        crear interfaces intuitivas, optimizar el rendimiento y brindar
-        soluciones innovadoras. Mi compromiso con la excelencia garantiza
-        productos visualmente atractivos y con una experiencia de usuario
-        excepcional.
+        Desarrollador de software con experiencia en crear soluciones digitales
+        funcionales y escalables. Transformo ideas en aplicaciones prácticas.
+        Entrego productos que son fáciles de usar y que resuelvan problemas
+        reales. Además, utilizo herramientas no-code/low-code para desarrollar
+        soluciones ágiles y eficientes, lo que me permite crear prototipos
+        interactivos, proyectos y soluciones rápidas de calidad.
       </p>
 
       <div class="botonesCV">
@@ -43,7 +43,7 @@
           <div class="icono">
             <font-awesome-icon icon="arrow-left" class="iconoFlecha" />
           </div>
-          <span>Servicios</span>
+          <span><a href="#habilidades">Servicios</a></span>
         </button>
       </div>
     </div>
@@ -246,6 +246,12 @@ export default {
   cursor: pointer;
   margin-left: 15px;
   overflow: hidden;
+  text-decoration: none;
+}
+
+.botonCV a {
+  text-decoration: none;
+  color: inherit;
 }
 
 @media (max-width: 480px) {

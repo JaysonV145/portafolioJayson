@@ -9,7 +9,7 @@
       </p>
 
       <div class="formContacto">
-        <form @submit.prevent="enviarFormulario">
+        <form @submit.prevent="submitForm">
           <div class="input-group">
             <input v-model="Nombre" type="text" placeholder="Nombre" required />
             <span class="icon"><font-awesome-icon icon="user" /></span>
@@ -44,6 +44,7 @@
 </template>
 <script>
 import ParticlesBackground from "@/components/ParticlesBackground.vue";
+import Swal from "sweetalert2";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import {
   faComment,
@@ -87,6 +88,14 @@ export default {
   },
   methods: {
     async submitForm() {
+      if (!this.Nombre || !this.Email || !this.Mensaje) {
+        Swal.fire({
+          icon: "warning",
+          title: "¡Oops!",
+          text: "Por favor, completa todos los campos.",
+        });
+        return;
+      }
       const apiKey =
         "patrUhgNVRedcpNpZ.b6ff194640dd41f5654f830a1fffabe9a2b23332ba0080add924a6eb8e5fcba0";
       const baseId = "appri9AFq9NWfIjRw";
@@ -116,10 +125,24 @@ export default {
           }
         );
         console.log("Success:", response.data);
-        alert("Formulario enviado con éxito");
+        Swal.fire({
+          icon: "success",
+          title: "¡Formulario enviado!",
+          text: "Tu mensaje ha sido enviado correctamente. ¡Estaré encantado de conocerte!",
+        });
+
+        // Resetear los campos del formulario
+        this.Nombre = "";
+        this.Email = "";
+        this.Mensaje = "";
       } catch (error) {
         console.error("Error:", error);
-        alert("Hubo un error al enviar el formulario");
+        // Alerta de error
+        Swal.fire({
+          icon: "error",
+          title: "¡Error!",
+          text: "Hubo un error al enviar el formulario, inténtalo nuevamente.",
+        });
       }
     },
   },
