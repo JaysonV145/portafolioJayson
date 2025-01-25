@@ -299,45 +299,26 @@ export default {
   }
 
   .carousel {
-    position: relative;
-    display: flex;
-    flex-direction: column; /* Asegura que los slides se apilen verticalmente */
-    width: 350px; /* Ancho completo */
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    height: auto; /* Altura automática para ajustarse al contenido */
-    overflow: hidden;
-  }
-  .carousel-indicators {
-    display: flex;
-    justify-content: center; /* Centra los puntos horizontalmente */
-    position: absolute; /* Posición absoluta para poder moverlos */
-    bottom: -50px;
-  }
-
-  .indicator {
-    height: 10px; /* Altura del punto */
-    width: 10px; /* Ancho del punto */
-    margin: 0 5px; /* Espacio entre puntos */
-    background-color: gray; /* Color por defecto */
-    border-radius: 50%; /* Forma circular */
-    cursor: pointer; /* Cambia el cursor al pasar sobre el punto */
+    margin-left: 90px;
+    width: 450px; /* Ocupa todo el ancho disponible */
+    height: auto; /* Ajusta la altura automáticamente */
   }
 
   .carousel-track {
-    display: flex;
-    flex-direction: row;
-    width: 1320px;
-    transition: transform 0.5s ease-in-out;
+    overflow-x: scroll; /* Habilita el desplazamiento horizontal */
+    overflow-y: hidden;
+    display: flex; /* Mantén las tarjetas en línea */
+    gap: 10px; /* Espacio entre tarjetas */
+    scroll-snap-type: x mandatory; /* Ayuda a que el deslizamiento sea fluido */
   }
 
   .carousel-slide {
-    display: flex;
-    width: 100%;
-    width: 25%; /* Mostrar 4 tarjetas a la vez */
+    flex-shrink: 0; /* Evita que se reduzcan más */
+    scroll-snap-align: center; /* Centra la tarjeta al detener el desplazamiento */
+  }
 
-    padding: 10px;
+  .carousel-indicators {
+    display: none; /* Oculta los puntos del carrusel en móviles */
   }
 
   .carousel-dots {

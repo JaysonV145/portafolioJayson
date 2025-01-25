@@ -323,6 +323,7 @@ export default {
   .section-title {
     text-align: start;
     font-size: 4rem;
+    white-space: normal; /**Para que la letra se baje */
     margin-bottom: 1.5rem;
     margin-left: -20px;
     color: #333;
