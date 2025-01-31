@@ -171,7 +171,7 @@ export default {
   },
   computed: {
     totalSlides() {
-      return Math.ceil(this.slides.length / 4); // Agrupa en conjuntos de 4
+      return Math.ceil(this.slides.length / 3); // Agrupa en conjuntos de 4
     },
   },
   methods: {
@@ -181,7 +181,7 @@ export default {
     autoSlide() {
       setInterval(() => {
         this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
-      }, 10000); // Cambia de slide cada 5 segundos
+      }, 15000); // Cambia de slide cada 15 segundos
     },
   },
   mounted() {
@@ -561,8 +561,8 @@ export default {
   justify-content: center;
   align-items: center;
   gap: 10px;
-  width: 140px; /**100px inicial */
-  height: 40px;
+  width: 120px; /**100px inicial */
+  height: 30px;
   padding: 1px;
   margin-bottom: 7px;
   background: #181c23;
@@ -580,7 +580,7 @@ export default {
   transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-.botonTicket:hover {
+.botonTicket:hover a {
   color: #181c23;
   transform: scale(1.1); /* Agranda el botón al pasar el cursor */
   transition: 0.5s;
