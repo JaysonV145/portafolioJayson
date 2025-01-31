@@ -29,7 +29,7 @@
                         class="flechaDerecha"
                       />
                     </div>
-                    <span>Proyectos</span>
+                    <span><a href="#contacto">Servicios</a></span>
                   </button>
                 </div>
               </div>
@@ -256,7 +256,7 @@ export default {
 }
 
 .carousel-slide {
-  min-width: 25%; /* Mostrar 4 tarjetas a la vez */
+  width: 25%; /* Mostrar 4 tarjetas a la vez */
   padding: 10px;
 }
 
@@ -295,21 +295,24 @@ export default {
     font-size: 60px;
     margin-left: 18px;
     color: var(--color-blanco);
+    margin-top: -10px;
     margin-bottom: 20px;
   }
 
   .carousel {
-    margin-left: 90px;
-    width: 450px; /* Ocupa todo el ancho disponible */
+    margin-left: 10px; /**Para ubicación */
+    width: 348px; /* Ocupa todo el ancho disponible */
     height: auto; /* Ajusta la altura automáticamente */
   }
 
   .carousel-track {
-    overflow-x: scroll; /* Habilita el desplazamiento horizontal */
-    overflow-y: hidden;
-    display: flex; /* Mantén las tarjetas en línea */
-    gap: 10px; /* Espacio entre tarjetas */
-    scroll-snap-type: x mandatory; /* Ayuda a que el deslizamiento sea fluido */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+    gap: 5px; /* Espaciado entre tarjetas */
+    overflow-x: visible; /* Evita el desplazamiento horizontal */
+    overflow-y: visible;
+    justify-content: center;
+    width: 100%;
   }
 
   .carousel-slide {
@@ -482,6 +485,11 @@ export default {
   margin-top: 10px;
 }
 
+.card a {
+  text-decoration: none;
+  color: var(--color-blanco);
+}
+
 .divider {
   width: 60px;
   border: none;
@@ -495,26 +503,19 @@ export default {
     display: flex;
     margin: auto;
     justify-content: center; /**Esto centra todo, los dots y demas. No cambiar */
-    width: 10px;
     flex-wrap: wrap;
-    height: auto;
+    height: 350px;
   }
 
   .contenedorHabilidades {
     display: grid;
-    grid-template-columns: 1fr; /* Cambia a una columna */
-    position: relative;
-    align-items: center;
-    justify-content: center;
-    justify-items: center;
-    gap: 10px;
-    box-sizing: border-box;
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas */
   }
 
   .card {
     background-color: #181c23;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: start;
     justify-content: start;
     text-align: start;
@@ -522,17 +523,18 @@ export default {
     padding: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
-    width: 340px; /**340px inicial */
-    height: 300px; /**300px */
+    width: 160px; /**340px inicial */
+    height: 70px; /**300px */
     box-sizing: border-box;
     overflow: hidden;
     position: relative; /* Necesario para posicionar el botón correctamente */
+    cursor: pointer;
   }
 
   .card h1 {
-    margin-top: 15px;
-    font-size: 22px;
-    margin-bottom: -10px;
+    margin-top: 10px;
+    font-size: 19px;
+    margin-left: 15px;
   }
 
   .card img {
@@ -542,16 +544,15 @@ export default {
   }
 
   .card p.description {
-    font-size: 14px;
-    margin-top: 10px;
+    display: none;
   }
 
   .divider {
-    width: 60px;
-    border: none;
-    border-top: 3px solid var(--color-blanco);
-    margin: 10px 0;
-    border-radius: 10px;
+    display: none;
+  }
+
+  .card .botonTicket {
+    display: none;
   }
 }
 
@@ -560,8 +561,8 @@ export default {
   justify-content: center;
   align-items: center;
   gap: 10px;
-  width: 120px; /**100px inicial */
-  height: 30px;
+  width: 140px; /**100px inicial */
+  height: 40px;
   padding: 1px;
   margin-bottom: 7px;
   background: #181c23;
