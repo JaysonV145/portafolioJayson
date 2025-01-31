@@ -160,9 +160,12 @@ export default {
     #ffffff,
     rgba(218, 194, 194, 0)
   ); */
+
   color: var(--color-blanco);
+
   /*background-clip: text; /**Hace que el fondo (el gradiente) solo sea visible dentro del área del texto. */
   /*-webkit-text-fill-color: transparent; /* Hace que el texto sea transparente */
+  animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
 }
 
 .desc_titulo {
@@ -176,6 +179,16 @@ export default {
   border-radius: 50%; /* Hace la imagen circular */
   margin: 0 auto 0 auto; /* Centra la imagen y añade espacio debajo si se quiere */
   object-fit: cover; /* Asegura que la imagen se recorte correctamente si no es cuadrada */
+  animation: scaleIn 1s ease-out, rotate 5s linear infinite;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
 }
 
 .titulo-inicio .nombreTexto {
@@ -771,6 +784,12 @@ export default {
   margin-right: 25px;
   font-size: 20px;
   cursor: pointer;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.redesSociales i:hover {
+  transform: rotate(360deg);
+  color: #00b8b8;
 }
 
 .redesSociales a {

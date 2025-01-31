@@ -91,7 +91,7 @@ export default {
 
 /* Márgenes personalizables */
 .custom-margin-title {
-  margin-top: 250px; /* Cambia este valor según necesites */
+  margin-top: 250px;
 }
 
 @media (max-width: 480px) {
@@ -101,11 +101,11 @@ export default {
 }
 
 .custom-margin-habilidades {
-  margin-top: 20px; /* Cambia este valor según necesites */
+  margin-top: 20px;
 }
 
 .custom-margin-experiencia {
-  margin-top: 110px; /* Cambia este valor según necesites */
+  margin-top: 110px;
 }
 
 .custom-margin-proyectos {

@@ -211,4 +211,31 @@ footer {
   justify-content: center;
   align-items: center;
 }
+
+@media (max-width: 480px) {
+  footer {
+    background-color: var(--color-negro);
+    color: var(--color-blanco);
+    padding: 1px 1px; /* Más espacio para mejorar la visualización */
+    text-align: center;
+    position: relative;
+  }
+
+  .footer-container div {
+    margin: 10px;
+    min-width: 200px; /* Ancho mínimo para evitar colapsos */
+  }
+
+  .footer-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center; /* Centrar verticalmente */
+    flex-wrap: wrap;
+    gap: 1px; /* Espacio entre los elementos */
+  }
+  .footer-credits {
+    margin-top: 10px;
+    font-size: 0.9em;
+  }
+}
 </style>
