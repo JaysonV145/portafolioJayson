@@ -88,8 +88,8 @@ export default {
     descargarCV() {
       // Crear un enlace dinámico para la descarga
       const link = document.createElement("a");
-      link.href = "/CV Jayson.pdf"; // Ruta al archivo del CV (ajústalo según tu estructura de archivos)
-      link.download = "CV_Jayson.pdf"; // Nombre con el que se descargará el archivo
+      link.href = "/CV Jayson Actual.pdf"; // Ruta al archivo del CV (ajústalo según tu estructura de archivos)
+      link.download = "CV_Jayson Actual.pdf"; // Nombre con el que se descargará el archivo
       link.click(); // Simular un clic para descargar el archivo
     },
   },
@@ -134,7 +134,7 @@ export default {
   margin: 0 auto;
   padding: 2rem;
   font-family: "Arial", sans-serif;
-  background: #fff;
+  background: #e8f2f5;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1;
 }
@@ -147,7 +147,7 @@ export default {
 .sobreMi {
   position: relative;
   font-size: 1.2rem;
-  color: var(--color-negro);
+  color: #2c8780;
   max-width: 90%;
   text-transform: uppercase;
 }
@@ -449,7 +449,7 @@ export default {
   right: 0;
   height: 100%;
   width: 100%;
-  background: linear-gradient(135deg, #004e7c, #007f9c);
+  background: #2c8480;
   clip-path: circle(18.4% at 100% 0);
   transition: clip-path 0.5s ease;
 }
@@ -496,7 +496,7 @@ export default {
 
 :nth-child(2) {
   &::before {
-    background-color: #03624c;
+    background-color: #2c8480;
   }
 }
 :nth-child(3) {

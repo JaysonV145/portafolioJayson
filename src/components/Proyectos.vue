@@ -41,19 +41,28 @@
           class="imagen-proyecto"
         />
         <div class="descripcion-proyecto">
-          <h1>Asistente virtual</h1>
-          <p class="descripcion">En proceso...</p>
+          <h1>Crypto Dashboard</h1>
+          <p class="descripcion">
+            Dashboard de Criptomonedas y Web 3.0, en proceso.
+          </p>
         </div>
         <div class="opcionesProyecto">
           <button>
             <span><font-awesome-icon icon="robot" /></span>IA
           </button>
           <button>
-            <span><font-awesome-icon icon="pen-fancy" /> </span>Voiceflow
+            <span><font-awesome-icon icon="pen-fancy" /> </span>React.js
           </button>
           <button>
-            <span><font-awesome-icon icon="up-right-from-square" /></span
-            >Proyecto
+            <span><font-awesome-icon icon="file-code" /></span>Web 3.0
+          </button>
+          <button>
+            <a
+              href="https://github.com/JaysonV145/crypto_project"
+              target="_blank"
+              ><span><font-awesome-icon icon="up-right-from-square" /></span
+              >Proyecto</a
+            >
           </button>
         </div>
       </div>

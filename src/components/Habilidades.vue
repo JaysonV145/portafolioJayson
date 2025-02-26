@@ -64,6 +64,7 @@ import figmaLogo from "@/assets/figma_logo.png";
 import SketchLogo from "@/assets/sketch_logo.png";
 import bubbleLogo from "@/assets/bubble_logo.png";
 import makeLogo from "@/assets/make_logo.png";
+import reactLogo from "@/assets/react_logo.png";
 
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import {
@@ -106,6 +107,18 @@ export default {
       activeButton: "tecnicas",
       slides: [
         {
+          img: reactLogo,
+          title: "React.js",
+          description:
+            "Desarrollo de interfaces de usuario en React, creando componentes reutilizables y dinámicos con hooks y state management para aplicaciones web interactivas y escalables.",
+        },
+        {
+          img: vueLogo,
+          title: "Vue.js",
+          description:
+            "Construcción de aplicaciones con Vue.js, gestionando el estado y creando interfaces dinámicas.",
+        },
+        {
           img: figmaLogo,
           title: "Figma",
           description:
@@ -129,12 +142,7 @@ export default {
           description:
             "Desarrollo de funcionalidades interactivas con JavaScript, manejando eventos y APIs para mejorar la experiencia del usuario.",
         },
-        {
-          img: vueLogo,
-          title: "Vue.js",
-          description:
-            "Construcción de aplicaciones con Vue.js, gestionando el estado y creando interfaces dinámicas.",
-        },
+
         {
           img: cssLogo,
           title: "CSS",

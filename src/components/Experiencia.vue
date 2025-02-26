@@ -202,7 +202,7 @@ export default {
 
 .icon-container {
   font-size: 3rem;
-  color: #007f9c;
+  color: #2c8480;
   margin-bottom: -10px;
   margin-top: 15px;
   transition: transform 0.3s ease;

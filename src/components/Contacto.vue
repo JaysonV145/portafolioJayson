@@ -232,7 +232,7 @@ export default {
 .contenedor-info-contacto p span {
   margin-right: 12px;
   font-size: 1.3rem;
-  color: #007f9c; /* Color verde para los iconos */
+  color: #2c8480; /* Color verde para los iconos */
   transition: transform 0.3s ease;
 }
 
@@ -246,7 +246,7 @@ export default {
   top: 50%; /* Posición relativa al contenedor principal */
   right: 0; /* Pegado al lado derecho */
   transform: translateY(-50%); /* Centrado vertical */
-  background: linear-gradient(135deg, #004e7c, #007f9c);
+  background: #2c8480;
   width: 20%; /* Ocupa el 10% del ancho */
   height: 100%; /* Asegúrate de que coincida con la altura del contenedor negro */
   animation: moverFondo 8s infinite alternate;
@@ -318,8 +318,8 @@ export default {
 
 .input-group input:focus,
 .input-group textarea:focus {
-  border-color: #007f9c;
-  box-shadow: 0 0 5px rgba(0, 127, 156, 0.5);
+  border-color: #2c8480;
+  box-shadow: 0 0 5px #2c8480;
   animation: focusAnimation 0.5s ease; /* Animación al hacer foco */
 }
 
@@ -334,7 +334,7 @@ export default {
 
 .input-group input:focus ~ .icon,
 .input-group textarea:focus ~ .icon {
-  color: #007f9c;
+  color: #2c8480;
 }
 
 .formContacto form input {
@@ -357,13 +357,13 @@ export default {
 
 .formContacto form textarea:focus {
   border: none;
-  border-bottom: 3px solid rgba(0, 127, 156, 0.5); /* Cambia el color al hacer foco */
+  border-bottom: 3px solid #2c8480; /* Cambia el color al hacer foco */
   transition: border-bottom-color 0.3s ease-in-out; /* Transición suave */
 }
 
 .formContacto form input:focus {
   border: none;
-  border-bottom: 3px solid rgba(0, 127, 156, 0.5); /* Cambia el color al hacer foco */
+  border-bottom: 3px solid #2c8480; /* Cambia el color al hacer foco */
   transition: border-bottom-color 0.3s ease-in-out; /* Transición suave */
 }
 
@@ -375,12 +375,10 @@ export default {
   margin: 0 auto;
   width: 470px;
   padding: 15px;
-  background-color: #007f9c;
-
+  background-color: #2c8480;
   color: #fff; /* Texto blanco */
   border: none;
   padding: 15px 30px;
-
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -432,7 +430,7 @@ export default {
 }
 
 .btn-enviar:hover {
-  background-color: #005f7a;
+  background-color: #2c8480;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4), 0 0 15px; /* Brillo adicional */
   transform: translateY(-3px) scale(1.03); /* Eleva y agranda ligeramente */
 }
@@ -510,7 +508,7 @@ export default {
     top: 50%; /* Posición relativa al contenedor principal */
     right: 0; /* Pegado al lado derecho */
     transform: translateY(-50%); /* Centrado vertical */
-    background: linear-gradient(135deg, #004e7c, #007f9c);
+    background: #2c8480;
     width: 0; /* Ocupa el 10% del ancho */
 
     z-index: 1; /* Colocado detrás del contenedor negro */
@@ -545,8 +543,8 @@ export default {
 
   .input-group input:focus,
   .input-group textarea:focus {
-    border-color: #007f9c;
-    box-shadow: 0 0 5px rgba(0, 127, 156, 0.5);
+    border-color: #2c8480;
+    box-shadow: 0 0 5px #2c8480;
   }
 
   .input-group .icon {
@@ -560,7 +558,7 @@ export default {
 
   .input-group input:focus ~ .icon,
   .input-group textarea:focus ~ .icon {
-    color: #007f9c;
+    color: #2c8480;
   }
 
   .formContacto form input {
@@ -600,7 +598,7 @@ export default {
     align-items: center;
     width: 330px;
     padding: 15px;
-    background-color: #007f9c;
+    background-color: #2c8480;
     color: white;
     border: none;
     border-radius: 5px;
@@ -610,7 +608,7 @@ export default {
   }
 
   .btn-enviar:hover {
-    background-color: #005f7a;
+    background-color: #2c8480;
     transform: scale(1.05);
   }
 

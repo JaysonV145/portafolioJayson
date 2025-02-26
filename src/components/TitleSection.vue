@@ -27,7 +27,7 @@
         <div class="icono">
           <font-awesome-icon icon="arrow-left" class="iconoFlecha" />
         </div>
-        <span>¡Contáctame!</span>
+        <span><a href="#habilidades">¡Contáctame!</a></span>
       </button>
       <button type="submit" class="botonDestino">
         <span>¿Quién soy yo?</span>
@@ -45,7 +45,7 @@
         class="iconoScroll"
       ></font-awesome-icon>
     </a>
-    <p>Scrollea para ver más</p>
+    <p>Baja para ver más</p>
   </div>
   <!--
     <div class="contenedorBotonIniciar">
@@ -275,12 +275,18 @@ export default {
   width: 100%;
   height: 100%;
   padding: 15px;
-  background: linear-gradient(135deg, #004e7c, #00b8b8); /**PRUEBAS */
+  background: #2c8780;
+  /*background: linear-gradient(135deg, #004e7c, #00b8b8); /**PRUEBAS */
   border: none;
   color: var(--color-blanco);
   cursor: pointer;
   margin: 5px 5px 5px 5px;
   overflow: hidden;
+}
+
+.botonTicket a {
+  text-decoration: none;
+  color: var(--color-blanco);
 }
 
 .botonTicket span {
@@ -320,11 +326,6 @@ export default {
   color: var(--color-blanco);
   width: 35px;
   height: 35px;
-}
-
-.botonTicket:hover {
-  background-color: var(--color-gris-fondo);
-  transition: 0.5s;
 }
 
 .botonDestino {
