@@ -6,7 +6,7 @@
   <div class="contenedor_padre">
     <div class="titulo-inicio">
       <img
-        src="../assets/foto_perfil.jpg"
+        src="../assets/fotoJayson.png"
         alt="Jayson Vargas"
         class="imagen_perfil"
       />
@@ -174,8 +174,8 @@ export default {
 }
 
 .imagen_perfil {
-  width: 110px; /* Tamaño de la imagen */
-  height: 110px; /* Asegura que sea cuadrada para el borde circular */
+  width: 140px; /* Tamaño de la imagen */
+  height: 135px; /* Asegura que sea cuadrada para el borde circular */
   border-radius: 50%; /* Hace la imagen circular */
   margin: 0 auto 0 auto; /* Centra la imagen y añade espacio debajo si se quiere */
   object-fit: cover; /* Asegura que la imagen se recorte correctamente si no es cuadrada */
