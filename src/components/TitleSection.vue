@@ -6,11 +6,11 @@
   <div class="contenedor_padre">
     <div class="titulo-inicio">
       <img
-        src="../assets/fotoJayson.png"
+        src="../assets/fotoJaysonV.png"
         alt="Jayson Vargas"
         class="imagen_perfil"
       />
-      <p>¡Hola! Soy Jayson Vargas 👋</p>
+      <p>¡Hola! Soy Jayson Vargas👋</p>
       <h2 class="texto-gradiente">
         Construyendo, diseñando, y creando experiencias
       </h2>
